@@ -103,6 +103,11 @@ def load_data():
 nb, spots = load_data()
 
 # ── 색상 & 이모지 설정 ─────────────────────────────────────
+def hex_to_rgba(hex_color, alpha=0.2):
+    hex_color = hex_color.lstrip("#")
+    r, g, b = int(hex_color[0:2], 16), int(hex_color[2:4], 16), int(hex_color[4:6], 16)
+    return f"rgba({r},{g},{b},{alpha})"
+
 COLORS = {
     "Hongdae":    "#FF6B6B",
     "Seongsu":    "#4ECDC4",
@@ -516,7 +521,7 @@ with tab3:
             r=values + [values[0]],
             theta=categories + [categories[0]],
             fill="toself",
-            fillcolor=f"{color}33",
+            fillcolor=hex_to_rgba(color, 0.2),
             line=dict(color=color, width=2),
             name=selected_nb
         ))

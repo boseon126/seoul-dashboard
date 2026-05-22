@@ -665,38 +665,57 @@ with tab4:
                     query = (spot_name + " " + spot_nb + " Seoul").replace(" ", "+")
                     google_maps_url = f"https://www.google.com/maps/search/?api=1&query={query}"
                     # Wikimedia / Unsplash fallback 이미지
-                    photo_keywords = {
-                        "Hongdae Street":        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Hongdae_Street_%28%EC%A0%9C%EB%AA%A9_%EC%97%86%EC%9D%8C%29_%28168093823%29.jpeg/800px-Hongdae_Street_%28%EC%A0%9C%EB%AA%A9_%EC%97%86%EC%9D%8C%29_%28168093823%29.jpeg",
-                        "Hongdae Free Market":   "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Hongdae_Free_Market_in_Seoul%2C_Korea.jpg/800px-Hongdae_Free_Market_in_Seoul%2C_Korea.jpg",
-                        "Gyeongbokgung Palace":  "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Gyeongbokgung-2014.jpg/800px-Gyeongbokgung-2014.jpg",
-                        "Bukchon Hanok Village": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Bukchon_Hanok_Village.jpg/800px-Bukchon_Hanok_Village.jpg",
-                        "Seoul Forest":          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Seoul_Forest_Park.jpg/800px-Seoul_Forest_Park.jpg",
-                        "COEX Mall":             "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/COEX_Mall_Atrium.jpg/800px-COEX_Mall_Atrium.jpg",
-                        "Myeongdong Street":     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Myeongdong.jpg/800px-Myeongdong.jpg",
-                        "Myeongdong Cathedral":  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Myeongdong_Cathedral_Seoul.jpg/800px-Myeongdong_Cathedral_Seoul.jpg",
-                        "Namdaemun Market":      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Namdaemun_Market_2013.jpg/800px-Namdaemun_Market_2013.jpg",
-                        "Sewoon Plaza":          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Sewoon_Sangga%2C_Seoul.jpg/800px-Sewoon_Sangga%2C_Seoul.jpg",
-                        "Dongdaemun Design Plaza":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/DDP_%28Dongdaemun_Design_Plaza%29%2C_Seoul%2C_Korea.jpg/800px-DDP_%28Dongdaemun_Design_Plaza%29%2C_Seoul%2C_Korea.jpg",
-                        "Leeum Samsung Museum":  "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Leeum_Samsung_Museum_of_Art.jpg/800px-Leeum_Samsung_Museum_of_Art.jpg",
-                        "Changdeokgung Palace":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Changdeokgung.jpg/800px-Changdeokgung.jpg",
-                        "Ssamziegil":            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ssamziegil_Seoul.jpg/800px-Ssamziegil_Seoul.jpg",
+                    # 스팟별 고유 Unsplash 사진 (photo ID로 각각 다른 사진)
+                    spot_photos = {
+                        "Hongdae Street":         "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=600&q=80",
+                        "Hongdae Free Market":    "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&q=80",
+                        "Club FF":                "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=600&q=80",
+                        "Cafe Bora":              "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80",
+                        "Gyeongui Line Forest Park": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+                        "Anthracite Coffee":      "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80",
+                        "Daelim Warehouse":       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+                        "Cafe Onion":             "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80",
+                        "Seoul Forest":           "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=600&q=80",
+                        "Seongsu Hangang Park":   "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80",
+                        "Bukchon Hanok Village":  "https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=600&q=80",
+                        "Gyeongbokgung Palace":   "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80",
+                        "National Folk Museum":   "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=600&q=80",
+                        "Changdeokgung Palace":   "https://images.unsplash.com/photo-1596422846543-75c6fc197f11?w=600&q=80",
+                        "Ssamziegil":             "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=600&q=80",
+                        "Ikseon-dong Alley":      "https://images.unsplash.com/photo-1583425423900-5d7d3c2c1c54?w=600&q=80",
+                        "Tapgol Park":            "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80",
+                        "Itaewon Food Street":    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
+                        "Leeum Samsung Museum":   "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=600&q=80",
+                        "Haebangchon":            "https://images.unsplash.com/photo-1514190051997-0f6f39ca5cde?w=600&q=80",
+                        "COEX Mall":              "https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf?w=600&q=80",
+                        "Gangnam Station":        "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=600&q=80",
+                        "Apgujeong Rodeo Street": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80",
+                        "SM Town":                "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80",
+                        "Euljiro 3-ga Alley":     "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80",
+                        "Sewoon Plaza":           "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
+                        "Dongdaemun Design Plaza": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
+                        "Gyeongui Line Forest Park (Yeonnam)": "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?w=600&q=80",
+                        "Tom N Toms Yeonnam":     "https://images.unsplash.com/photo-1481833761820-0509d3217039?w=600&q=80",
+                        "Myeongdong Street":      "https://images.unsplash.com/photo-1573741718888-29fbfe7bfcf2?w=600&q=80",
+                        "Myeongdong Cathedral":   "https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=600&q=80",
+                        "Namdaemun Market":       "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=600&q=80",
+                        "Mangwon Market":         "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&q=80",
+                        "Yeonnam-dong Alley":     "https://images.unsplash.com/photo-1510133768164-a8f7e4d4e3dc?w=600&q=80",
+                        "Hongje Stream":          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+                        "Unhyeongung Palace":     "https://images.unsplash.com/photo-1596422846543-75c6fc197f11?w=600&q=80",
+                        "Nagwon Arcade":          "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&q=80",
                     }
-                    # 카테고리별 기본 이미지
-                    cat_fallback = {
-                        "cafe":         "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=400&q=80",
-                        "landmark":     "https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=400&q=80",
-                        "park":         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
-                        "museum":       "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=400&q=80",
-                        "market":       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80",
-                        "shopping":     "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=400&q=80",
-                        "nightlife":    "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=400&q=80",
-                        "kpop":         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80",
-                        "neighborhood": "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=400&q=80",
-                    }
-                    img_url = photo_keywords.get(
-                        spot_name,
-                        cat_fallback.get(str(spot["category"]), cat_fallback["landmark"])
-                    )
+                    img_url = spot_photos.get(spot_name, {
+                        "cafe":         "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80",
+                        "landmark":     "https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=600&q=80",
+                        "park":         "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=600&q=80",
+                        "museum":       "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=600&q=80",
+                        "market":       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80",
+                        "shopping":     "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=600&q=80",
+                        "nightlife":    "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=600&q=80",
+                        "kpop":         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80",
+                        "neighborhood": "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80",
+                    }.get(str(spot["category"]), "https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=600&q=80"))
 
                     # 카드 상단 컬러 바
                     st.markdown(
@@ -1254,101 +1273,295 @@ Rules:
 - Write warmly and personally, like a local friend giving advice
 - ALL text must be in Korean except place names"""
 
-            with st.spinner("✨ AI가 맞춤 코스를 생성하고 있어요..."):
-                try:
-                    import requests, json
+            # ── 규칙 기반 코스 자동 생성 ──────────────────
+            import time as _time
 
-                    response = requests.post(
-                        "https://api.anthropic.com/v1/messages",
-                        headers={"Content-Type": "application/json"},
-                        json={
-                            "model": "claude-sonnet-4-20250514",
-                            "max_tokens": 1500,
-                            "messages": [{"role": "user", "content": prompt}]
-                        },
-                        timeout=30
+            # 시간 계산 헬퍼
+            def next_time(current, minutes):
+                h, m = map(int, current.split(":"))
+                total = h * 60 + m + minutes
+                return f"{total // 60:02d}:{total % 60:02d}"
+
+            # 스타일별 시간 배분 (분)
+            style_durations = {
+                "🌿 Healing": {"cafe": 60, "park": 50, "landmark": 40, "museum": 50,
+                               "market": 35, "shopping": 40, "nightlife": 30,
+                               "kpop": 30, "neighborhood": 45},
+                "⚡ Active":  {"cafe": 30, "park": 30, "landmark": 30, "museum": 40,
+                               "market": 30, "shopping": 50, "nightlife": 60,
+                               "kpop": 45, "neighborhood": 30},
+                "🍜 Food Travel": {"cafe": 50, "park": 25, "landmark": 30, "museum": 35,
+                                   "market": 60, "shopping": 35, "nightlife": 50,
+                                   "kpop": 25, "neighborhood": 35},
+                "🏛️ Culture": {"cafe": 40, "park": 35, "landmark": 60, "museum": 70,
+                               "market": 40, "shopping": 30, "nightlife": 30,
+                               "kpop": 30, "neighborhood": 50},
+            }
+            style_key = next((k for k in style_durations if k in planner_style), "⚡ Active")
+            durations = style_durations[style_key]
+
+            # 스타일별 코멘트 템플릿
+            style_comments = {
+                "cafe": {
+                    "🌿 Healing": "여유롭게 커피 한 잔 즐기며 하루를 시작해요. 감성 인테리어를 구경하는 것도 놓치지 마세요!",
+                    "⚡ Active": "빠르게 에너지 충전! 테이크아웃으로 시작해 바로 다음 장소로 이동해요.",
+                    "🍜 Food Travel": "이 동네의 시그니처 카페에서 특색 있는 음료를 꼭 맛봐요.",
+                    "🏛️ Culture": "역사적인 골목 사이 숨어있는 카페에서 잠깐 쉬어가요.",
+                },
+                "landmark": {
+                    "🌿 Healing": "천천히 걸으며 사진을 찍고, 분위기를 온몸으로 느껴보세요.",
+                    "⚡ Active": "핵심 포인트만 빠르게 둘러보고 다음 스팟으로 출발!",
+                    "🍜 Food Travel": "관광 후 근처 로컬 식당을 찾아보는 것도 좋아요.",
+                    "🏛️ Culture": "안내판을 꼼꼼히 읽으며 역사적 배경을 깊이 이해해봐요.",
+                },
+                "park": {
+                    "🌿 Healing": "벤치에 앉아 아무것도 안 해도 좋아요. 진정한 힐링 타임!",
+                    "⚡ Active": "조깅이나 자전거 대여로 에너지를 발산해봐요.",
+                    "🍜 Food Travel": "피크닉 도시락을 사 와서 공원에서 먹어요.",
+                    "🏛️ Culture": "공원의 역사적 의미와 주변 문화 공간을 함께 탐방해요.",
+                },
+                "museum": {
+                    "🌿 Healing": "천천히 작품 하나하나를 감상하며 내면을 들여다봐요.",
+                    "⚡ Active": "하이라이트 작품 위주로 빠르게 관람해요.",
+                    "🍜 Food Travel": "뮤지엄 카페나 레스토랑에서 식사도 즐겨봐요.",
+                    "🏛️ Culture": "오디오 가이드나 도슨트 투어를 적극 활용해요.",
+                },
+                "market": {
+                    "🌿 Healing": "시장 구경하며 소소한 행복을 찾아요. 현지인들의 일상 속으로!",
+                    "⚡ Active": "길거리 음식을 빠르게 먹으며 에너지 보충!",
+                    "🍜 Food Travel": "이 코스의 하이라이트! 다양한 음식을 조금씩 맛봐요.",
+                    "🏛️ Culture": "오래된 상인들과 이야기 나누며 서울의 역사를 느껴봐요.",
+                },
+                "shopping": {
+                    "🌿 Healing": "마음에 드는 독립 브랜드 제품을 찾아 소소한 쇼핑을 즐겨요.",
+                    "⚡ Active": "원하는 것 리스트업 후 효율적으로 쇼핑 완료!",
+                    "🍜 Food Travel": "쇼핑몰 푸드코트에서 다양한 음식도 즐겨봐요.",
+                    "🏛️ Culture": "전통 공예품이나 독립 아티스트 작품을 찾아봐요.",
+                },
+                "nightlife": {
+                    "🌿 Healing": "조용한 바에서 음악을 들으며 하루를 마무리해요.",
+                    "⚡ Active": "신나는 클럽이나 라이브 공연으로 하루를 화끈하게 마무리!",
+                    "🍜 Food Travel": "야식 문화를 제대로 경험해봐요.",
+                    "🏛️ Culture": "재즈바나 인디 음악 공연장에서 서울의 밤을 느껴봐요.",
+                },
+                "kpop": {
+                    "🌿 Healing": "좋아하는 아티스트의 흔적을 조용히 찾아봐요.",
+                    "⚡ Active": "K-pop 댄스 체험이나 팬샵 투어를 즐겨요!",
+                    "🍜 Food Travel": "아이돌이 자주 가는 식당을 찾아봐요.",
+                    "🏛️ Culture": "한국 대중음악의 역사와 산업을 탐구해봐요.",
+                },
+                "neighborhood": {
+                    "🌿 Healing": "골목길을 따라 발길 닿는 대로 천천히 걸어요.",
+                    "⚡ Active": "동네 전체를 빠르게 둘러보며 포토존을 찾아요.",
+                    "🍜 Food Travel": "동네 숨은 맛집을 찾는 재미를 느껴봐요.",
+                    "🏛️ Culture": "동네의 역사와 변천사를 생각하며 골목을 탐방해요.",
+                },
+            }
+
+            # 이동 시간 (동네 간)
+            travel_tips = {
+                ("Seongsu", "Hongdae"):   ("2호선 성수 → 홍대입구", 25),
+                ("Hongdae", "Seongsu"):   ("2호선 홍대입구 → 성수", 25),
+                ("Seongsu", "Gangnam"):   ("2호선 성수 → 강남", 20),
+                ("Gangnam", "Seongsu"):   ("2호선 강남 → 성수", 20),
+                ("Hongdae", "Itaewon"):   ("6호선 이태원역 도보 이동", 20),
+                ("Itaewon", "Hongdae"):   ("6호선 → 2호선 환승", 20),
+                ("Bukchon", "Insadong"):  ("도보 10분 거리", 12),
+                ("Insadong", "Bukchon"):  ("도보 10분 거리", 12),
+                ("Gangnam", "Itaewon"):   ("지하철 2호선 → 6호선 환승", 18),
+                ("Itaewon", "Gangnam"):   ("6호선 → 2호선 환승", 18),
+                ("Yeonnam", "Hongdae"):   ("경의선 숲길 도보 15분", 15),
+                ("Hongdae", "Yeonnam"):   ("경의선 숲길 도보 15분", 15),
+                ("Euljiro", "Insadong"):  ("도보 15분 또는 지하철 1정거장", 15),
+                ("Insadong", "Euljiro"):  ("도보 15분 또는 지하철 1정거장", 15),
+                ("Myeongdong", "Insadong"): ("도보 15분", 15),
+                ("Insadong", "Myeongdong"): ("도보 15분", 15),
+            }
+
+            # 예산 계산
+            budget_base = {
+                "🌿 Healing": {"cafe": 12000, "park": 0, "landmark": 5000,
+                               "museum": 8000, "market": 15000, "shopping": 30000,
+                               "nightlife": 20000, "kpop": 15000, "neighborhood": 0},
+                "⚡ Active":  {"cafe": 7000, "park": 0, "landmark": 5000,
+                               "museum": 8000, "market": 20000, "shopping": 50000,
+                               "nightlife": 35000, "kpop": 20000, "neighborhood": 0},
+                "🍜 Food Travel": {"cafe": 10000, "park": 5000, "landmark": 3000,
+                                   "museum": 8000, "market": 25000, "shopping": 20000,
+                                   "nightlife": 30000, "kpop": 10000, "neighborhood": 0},
+                "🏛️ Culture": {"cafe": 8000, "park": 0, "landmark": 8000,
+                               "museum": 12000, "market": 12000, "shopping": 15000,
+                               "nightlife": 15000, "kpop": 10000, "neighborhood": 0},
+            }
+            budgets = budget_base.get(style_key, budget_base["⚡ Active"])
+
+            # 코스 빌드
+            current_time = start_time
+            stops = []
+            total_budget = 0
+
+            for nb_idx, nb_name in enumerate(selected_nbs):
+                # 동네 이동 안내
+                if nb_idx > 0:
+                    prev = selected_nbs[nb_idx - 1]
+                    tip_key = (prev, nb_name)
+                    tip_text, tip_min = travel_tips.get(
+                        tip_key, ("지하철 또는 버스 이용", 20)
                     )
-                    result = response.json()
-                    itinerary = result["content"][0]["text"]
+                    current_time = next_time(current_time, tip_min)
+                    stops.append({
+                        "type": "transit",
+                        "time": current_time,
+                        "text": tip_text,
+                        "nb": nb_name,
+                    })
 
-                    # 결과 표시
-                    nb_names_kr = " + ".join(
-                        [d["kr"] for d in nb_details]
+                nb_row = nb[nb["neighborhood"] == nb_name].iloc[0]
+                nb_spots_list = spots[spots["neighborhood"] == nb_name].copy()
+                # must-visit 우선, 최대 3개
+                must = nb_spots_list[nb_spots_list["must_visit"] == True].head(3)
+                if len(must) < 2:
+                    must = nb_spots_list.head(3)
+
+                for _, sp in must.iterrows():
+                    cat = str(sp["category"])
+                    dur = durations.get(cat, 40)
+                    bud = budgets.get(cat, 0)
+                    comment = style_comments.get(cat, {}).get(style_key, "이 장소를 충분히 즐겨봐요!")
+                    stops.append({
+                        "type": "spot",
+                        "time": current_time,
+                        "name": sp["spot_name"],
+                        "name_kr": sp["spot_name_kr"],
+                        "cat": cat,
+                        "nb": nb_name,
+                        "nb_kr": nb_row["neighborhood_kr"],
+                        "comment": comment,
+                        "budget": bud,
+                        "duration": dur,
+                        "is_must": sp["must_visit"],
+                    })
+                    total_budget += bud
+                    current_time = next_time(current_time, dur)
+
+            # ── 결과 헤더 ──
+            nb_names_kr = " + ".join([
+                nb[nb["neighborhood"]==n]["neighborhood_kr"].values[0]
+                for n in selected_nbs
+            ])
+            st.markdown(
+                f"<div style='background:linear-gradient(135deg,#1E3A5F,#2563EB); "
+                f"color:white; border-radius:16px; padding:20px 24px; margin-bottom:20px'>"
+                f"<div style='font-size:13px; opacity:0.8'>📋 Generated Itinerary</div>"
+                f"<div style='font-size:22px; font-weight:700; margin:4px 0'>"
+                f"🗓️ {nb_names_kr} 하루 코스</div>"
+                f"<div style='font-size:13px; opacity:0.85'>"
+                f"{style_clean} · {who_clean} · {start_time} 출발</div>"
+                f"</div>",
+                unsafe_allow_html=True
+            )
+
+            # ── 타임라인 ──
+            CAT_EMOJI_PLAN = {
+                "cafe": "☕", "landmark": "🏛️", "park": "🌿",
+                "museum": "🖼️", "market": "🛒", "shopping": "🛍️",
+                "nightlife": "🌙", "kpop": "🎵", "neighborhood": "📍",
+            }
+            for stop in stops:
+                if stop["type"] == "transit":
+                    c = COLORS.get(stop["nb"], "#888")
+                    st.markdown(
+                        f"<div style='display:flex; align-items:center; gap:12px; "
+                        f"padding:10px 16px; margin:6px 0; background:#f8f9fa; "
+                        f"border-radius:10px; border-left:3px dashed {c}'>"
+                        f"<span style='font-size:18px'>🚇</span>"
+                        f"<div>"
+                        f"<span style='font-size:12px; color:#888'>{stop['time']} 이동</span><br>"
+                        f"<span style='font-size:13px; color:#555; font-weight:500'>"
+                        f"{stop['text']}</span>"
+                        f"</div></div>",
+                        unsafe_allow_html=True
+                    )
+                else:
+                    c = COLORS.get(stop["nb"], "#2563EB")
+                    emoji = CAT_EMOJI_PLAN.get(stop["cat"], "📍")
+                    bud_text = f"₩{stop['budget']:,}" if stop["budget"] > 0 else "무료"
+                    must_badge = (
+                        "<span style='background:#FFD700; color:#333; border-radius:20px; "
+                        "padding:1px 8px; font-size:11px; margin-left:6px'>⭐ Must</span>"
+                        if stop["is_must"] else ""
                     )
                     st.markdown(
-                        f"<div style='background:linear-gradient(135deg,#1E3A5F,#2563EB); "
-                        f"color:white; border-radius:16px; padding:20px 24px; "
-                        f"margin-bottom:20px'>"
-                        f"<div style='font-size:13px; opacity:0.8'>✨ AI Generated Itinerary</div>"
-                        f"<div style='font-size:22px; font-weight:700; margin:4px 0'>"
-                        f"🗓️ {nb_names_kr} 하루 코스</div>"
-                        f"<div style='font-size:13px; opacity:0.85'>"
-                        f"{style_clean} · {who_clean} · {start_time} 출발</div>"
+                        f"<div style='background:white; border-radius:12px; "
+                        f"padding:16px 18px; margin:6px 0; "
+                        f"box-shadow:0 2px 6px rgba(0,0,0,0.06); "
+                        f"border-left:4px solid {c}'>"
+                        f"<div style='display:flex; justify-content:space-between; "
+                        f"align-items:center; margin-bottom:6px'>"
+                        f"<span style='font-size:13px; color:{c}; font-weight:700'>"
+                        f"⏰ {stop['time']}</span>"
+                        f"<span style='font-size:11px; color:#888; "
+                        f"background:#f0f4ff; padding:2px 8px; border-radius:20px'>"
+                        f"💰 {bud_text}</span>"
+                        f"</div>"
+                        f"<div style='font-size:15px; font-weight:700; color:#1E3A5F'>"
+                        f"{emoji} {stop['name']}{must_badge}</div>"
+                        f"<div style='font-size:12px; color:#888; margin:2px 0 6px'>"
+                        f"{stop['name_kr']} · {stop['nb_kr']}</div>"
+                        f"<div style='font-size:13px; color:#555; line-height:1.6'>"
+                        f"{stop['comment']}</div>"
                         f"</div>",
                         unsafe_allow_html=True
                     )
 
-                    # 일정 텍스트 출력
-                    st.markdown(
-                        f"<div style='background:white; border-radius:12px; "
-                        f"padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06); "
-                        f"line-height:1.9; font-size:15px; color:#333; "
-                        f"white-space:pre-wrap'>{itinerary}</div>",
-                        unsafe_allow_html=True
-                    )
+            # ── 총 예산 ──
+            st.markdown(
+                f"<div style='background:#f0f9f0; border:1px solid #86efac; "
+                f"border-radius:12px; padding:16px 20px; margin-top:16px; "
+                f"display:flex; justify-content:space-between; align-items:center'>"
+                f"<span style='font-size:15px; font-weight:700; color:#166534'>"
+                f"📊 하루 예상 총 비용</span>"
+                f"<span style='font-size:22px; font-weight:700; color:#166534'>"
+                f"₩{total_budget:,}</span>"
+                f"</div>",
+                unsafe_allow_html=True
+            )
 
-                    # 선택된 동네 지도
-                    st.markdown("#### 📍 코스 지도")
-                    m_plan = __import__('folium').Map(
-                        location=[37.5665, 126.9780],
-                        zoom_start=13,
-                        tiles="CartoDB positron"
-                    )
-                    for i, nb_name in enumerate(selected_nbs):
-                        row_m = nb[nb["neighborhood"] == nb_name].iloc[0]
-                        c = COLORS.get(nb_name, "#888")
-                        __import__('folium').Marker(
-                            location=[row_m["lat"], row_m["lng"]],
-                            icon=__import__('folium').DivIcon(
-                                html=f"<div style='background:{c}; color:white; "
-                                     f"border-radius:50%; width:32px; height:32px; "
-                                     f"display:flex; align-items:center; "
-                                     f"justify-content:center; font-weight:700; "
-                                     f"font-size:14px; box-shadow:0 2px 6px rgba(0,0,0,0.3)'>"
-                                     f"{i+1}</div>",
-                                icon_size=(32, 32),
-                                icon_anchor=(16, 16)
-                            ),
-                            tooltip=f"{i+1}. {row_m['neighborhood_kr']}"
-                        ).add_to(m_plan)
-
-                        # 해당 동네 스팟도 표시
-                        nb_sp = spots[
-                            (spots["neighborhood"] == nb_name) &
-                            (spots["must_visit"] == True)
-                        ]
-                        for _, sp in nb_sp.iterrows():
-                            __import__('folium').CircleMarker(
-                                location=[sp["lat"], sp["lng"]],
-                                radius=6,
-                                color=c,
-                                fill=True,
-                                fill_color=c,
-                                fill_opacity=0.6,
-                                tooltip=sp["spot_name"]
-                            ).add_to(m_plan)
-
-                    __import__('streamlit_folium').st_folium(
-                        m_plan, width=None, height=380,
-                        use_container_width=True
-                    )
-
-                except Exception as e:
-                    st.error(f"AI 연결 오류: {e}")
-                    st.info(
-                        "Streamlit Cloud의 Secrets에 API 키가 없어도 괜찮아요! "
-                        "이 기능은 발표용 데모로 보여주면 돼요 😊"
-                    )
+            # ── 코스 지도 ──
+            st.markdown("#### 📍 코스 지도")
+            import folium
+            from streamlit_folium import st_folium as _st_folium
+            m_plan = folium.Map(
+                location=[37.5665, 126.9780],
+                zoom_start=13,
+                tiles="CartoDB positron"
+            )
+            for i, nb_name in enumerate(selected_nbs):
+                row_m = nb[nb["neighborhood"] == nb_name].iloc[0]
+                c = COLORS.get(nb_name, "#888")
+                folium.Marker(
+                    location=[row_m["lat"], row_m["lng"]],
+                    icon=folium.DivIcon(
+                        html=(f"<div style='background:{c}; color:white; "
+                              f"border-radius:50%; width:32px; height:32px; "
+                              f"display:flex; align-items:center; justify-content:center; "
+                              f"font-weight:700; font-size:14px; "
+                              f"box-shadow:0 2px 6px rgba(0,0,0,0.3)'>{i+1}</div>"),
+                        icon_size=(32, 32), icon_anchor=(16, 16)
+                    ),
+                    tooltip=f"{i+1}. {row_m['neighborhood_kr']}"
+                ).add_to(m_plan)
+                for _, sp in spots[
+                    (spots["neighborhood"] == nb_name) &
+                    (spots["must_visit"] == True)
+                ].iterrows():
+                    folium.CircleMarker(
+                        location=[sp["lat"], sp["lng"]],
+                        radius=7, color=c, fill=True,
+                        fill_color=c, fill_opacity=0.7,
+                        tooltip=sp["spot_name"]
+                    ).add_to(m_plan)
+            _st_folium(m_plan, width=None, height=400, use_container_width=True)
 
 
 # ── 푸터 ──────────────────────────────────────────────────

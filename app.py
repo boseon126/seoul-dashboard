@@ -61,6 +61,60 @@ T = {
         "generated":    "📋 Generated Itinerary",
         "footer":       "📊 Data: Google Maps · 공개 여행 가이드 · 자체 조사 | 🛠️ Built with Streamlit, Folium & Plotly | Arts and Big Data — SKKU 2026",
         "lang_toggle":  "🌐 English",
+        # Tab2 - Find My Style
+        "find_title":   "### 🎯 내 여행 스타일 찾기",
+        "find_sub":     "아래 질문에 답하면 나에게 맞는 동네를 추천해드려요!",
+        "style_label":  "#### ① 여행 스타일을 선택하세요",
+        "cat_label":    "#### ② 선호하는 카테고리 (복수 선택)",
+        "vibe_label":   "#### ③ 분위기 선호도",
+        "vibe_slider":  "조용함 ← → 활기참",
+        "find_btn":     "🔍  나에게 맞는 동네 찾기!",
+        "style_guide_title": "#### 📖 여행 스타일 가이드",
+        "result_title": "### 🏆 추천 결과",
+        "rank_title":   "#### 📊 전체 동네 매칭 점수",
+        "cat_cafe":     "☕ Cafe  카페",
+        "cat_food":     "🍜 Food  맛집",
+        "cat_shop":     "🛍️ Shopping  쇼핑",
+        "cat_culture":  "🏛️ Culture  문화/역사",
+        "match_label":  "Match",
+        "guide_best":   "추천 동네",
+        # Tab3 - Neighborhoods
+        "nb_select":    "동네를 선택해서 자세한 정보를 보세요:",
+        "radar_title":  "Neighborhood Score Profile",
+        "time_title":   "Best Time to Visit",
+        "cat_comp":     "#### 🗂️ Category Composition",
+        "style_match":  "#### 🎯 Travel Style Match Score",
+        # Tab4 - Key Spots
+        "spots_title":  "### 📍 주요 스팟",
+        "area_filter":  "동네 선택:",
+        "cat_filter":   "카테고리 선택:",
+        "must_filter":  "⭐ Must-visit 장소만 보기",
+        "spots_count":  "개 장소 표시 중",
+        "gmaps_btn":    "🗺️ Google Maps에서 보기",
+        # Tab5 - Data
+        "data_title":   "### 📊 Neighborhood Data Overview",
+        "data_sub":     "모든 동네의 데이터를 한눈에 비교해보세요.",
+        "col_select":   "보고 싶은 항목 선택:",
+        "dl_btn":       "📥 데이터 다운로드 (CSV)",
+        "compare_title":"#### 📈 Score Comparison Chart",
+        # Tab6 - SNS
+        "sns_title":    "### 📸 SNS 인기도 vs 실제 만족도",
+        "sns_sub":      "Instagram 언급량이 많은 동네가 실제로도 만족도가 높을까요?",
+        "sns_card1":    "가장 인스타그래머블",
+        "sns_card2":    "실제 만족도 1위",
+        "sns_card3":    "숨은 보석 (과소평가)",
+        "sns_scatter":  "#### 🔍 Instagram Mentions vs. Google Rating",
+        "sns_scatter_cap": "버블 크기 = 리뷰 수 | 오른쪽 위 = SNS도 인기, 평점도 높음",
+        "sns_gap":      "#### 📊 SNS 순위 vs 평점 순위 — Gap 분석",
+        "sns_gap_cap":  "양수(+) = 숨은 보석 | 음수(-) = 과대평가",
+        "sns_insight":  "#### 💡 Key Insights",
+        "mentions":     "mentions",
+        "quad1":        "🌟 SNS 인기 + 고평점",
+        "quad2":        "💎 숨은 보석",
+        "quad3":        "📸 SNS만 화려",
+        "ins1_title":   "📸 SNS 버블 주의",
+        "ins1_body":    "성수동과 홍대는 Instagram 언급량이 압도적으로 높지만, 실제 Google 평점은 북촌·연남동보다 낮아요. SNS 인기가 반드시 높은 만족도를 보장하지 않아요.",
+        "ins2_title":   "💎 숨은 보석을 찾아라",
     },
     "EN": {
         "title":        "🗺️ Seoul Neighborhood Travel Style Dashboard",
@@ -101,6 +155,60 @@ T = {
         "generated":    "📋 Generated Itinerary",
         "footer":       "📊 Data: Google Maps · Public travel guides · Manual research | 🛠️ Built with Streamlit, Folium & Plotly | Arts and Big Data — SKKU 2026",
         "lang_toggle":  "🌐 한국어",
+        # Tab2
+        "find_title":   "### 🎯 Find Your Perfect Neighborhood",
+        "find_sub":     "Answer a few questions and we'll match you with the best neighborhood!",
+        "style_label":  "#### ① Choose your travel style",
+        "cat_label":    "#### ② Preferred categories (multi-select)",
+        "vibe_label":   "#### ③ Atmosphere preference",
+        "vibe_slider":  "Quiet ← → Lively",
+        "find_btn":     "🔍  Find My Neighborhood!",
+        "style_guide_title": "#### 📖 Travel Style Guide",
+        "result_title": "### 🏆 Recommended Neighborhoods",
+        "rank_title":   "#### 📊 Match Score — All Neighborhoods",
+        "cat_cafe":     "☕ Cafe",
+        "cat_food":     "🍜 Food",
+        "cat_shop":     "🛍️ Shopping",
+        "cat_culture":  "🏛️ Culture",
+        "match_label":  "Match",
+        "guide_best":   "Best for",
+        # Tab3
+        "nb_select":    "Select a neighborhood to see its detailed profile:",
+        "radar_title":  "Neighborhood Score Profile",
+        "time_title":   "Best Time to Visit",
+        "cat_comp":     "#### 🗂️ Category Composition",
+        "style_match":  "#### 🎯 Travel Style Match Score",
+        # Tab4
+        "spots_title":  "### 📍 Key Spots",
+        "area_filter":  "Filter by neighborhood:",
+        "cat_filter":   "Filter by category:",
+        "must_filter":  "⭐ Must-visit only",
+        "spots_count":  "spots shown",
+        "gmaps_btn":    "🗺️ View on Google Maps",
+        # Tab5
+        "data_title":   "### 📊 Neighborhood Data Overview",
+        "data_sub":     "Compare all neighborhoods side by side.",
+        "col_select":   "Select columns to display:",
+        "dl_btn":       "📥 Download Data (CSV)",
+        "compare_title":"#### 📈 Score Comparison Chart",
+        # Tab6
+        "sns_title":    "### 📸 SNS Popularity vs. Real Satisfaction",
+        "sns_sub":      "Do neighborhoods with more Instagram mentions actually satisfy visitors more?",
+        "sns_card1":    "Most Instagrammable",
+        "sns_card2":    "Highest Real Rating",
+        "sns_card3":    "Hidden Gem (Underrated)",
+        "sns_scatter":  "#### 🔍 Instagram Mentions vs. Google Rating",
+        "sns_scatter_cap": "Bubble size = review count | Top right = popular AND well-rated",
+        "sns_gap":      "#### 📊 SNS Rank vs. Rating Rank — Gap Analysis",
+        "sns_gap_cap":  "Positive = hidden gem | Negative = overrated on SNS",
+        "sns_insight":  "#### 💡 Key Insights",
+        "mentions":     "mentions",
+        "quad1":        "🌟 SNS popular + high rating",
+        "quad2":        "💎 Hidden gem",
+        "quad3":        "📸 SNS only",
+        "ins1_title":   "📸 SNS Bubble Warning",
+        "ins1_body":    "Seongsu and Hongdae have the highest Instagram mentions, but their Google ratings are lower than Bukchon and Yeonnam. SNS popularity doesn't guarantee real satisfaction.",
+        "ins2_title":   "💎 Find the Hidden Gems",
     },
 }
 
@@ -377,7 +485,7 @@ with tab1:
 # TAB 2 — FIND MY STYLE
 # ═══════════════════════════════════════════════════════════
 with tab2:
-    st.markdown("### 🎯 Find Your Perfect Seoul Neighborhood")
+    st.markdown(L["find_title"])
     st.markdown("아래 질문에 답하면 나에게 맞는 동네를 추천해드려요!")
 
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
@@ -385,7 +493,7 @@ with tab2:
     col_q, col_r = st.columns([1.2, 1])
 
     with col_q:
-        st.markdown("#### ① 여행 스타일을 선택하세요")
+        st.markdown(L["style_label"])
         travel_style = st.radio(
             "",
             ["Healing 힐링", "Active 액티브", "Food Travel 미식", "Culture 문화탐방"],
@@ -394,23 +502,23 @@ with tab2:
             label_visibility="collapsed"
         )
 
-        st.markdown("#### ② 선호하는 카테고리 (복수 선택)")
-        cat_cafe     = st.checkbox("☕ Cafe  카페", value=True)
-        cat_food     = st.checkbox("🍜 Food  맛집", value=True)
-        cat_shopping = st.checkbox("🛍️ Shopping  쇼핑")
-        cat_culture  = st.checkbox("🏛️ Culture  문화/역사")
+        st.markdown(L["cat_label"])
+        cat_cafe     = st.checkbox(L["cat_cafe"], value=True)
+        cat_food     = st.checkbox(L["cat_food"], value=True)
+        cat_shopping = st.checkbox(L["cat_shop"])
+        cat_culture  = st.checkbox(L["cat_culture"])
 
-        st.markdown("#### ③ 분위기 선호도")
+        st.markdown(L["vibe_label"])
         vibe_pref = st.slider(
-            "조용함 ← → 활기참",
+            L["vibe_slider"],
             min_value=1, max_value=10, value=5,
             help="1 = 매우 조용한 곳, 10 = 매우 활기찬 곳"
         )
 
-        find_btn = st.button("🔍  나에게 맞는 동네 찾기!", use_container_width=True)
+        find_btn = st.button(L["find_btn"], use_container_width=True)
 
     with col_r:
-        st.markdown("#### 📖 여행 스타일 가이드")
+        st.markdown(L["style_guide_title"])
         style_guide = {
             "Healing 힐링": {
                 "desc": "조용하고 여유로운 여행을 좋아해요. 카페에서 책 읽기, 공원 산책, 감성 골목 탐방이 좋아요.",
@@ -452,7 +560,7 @@ with tab2:
     # ── 결과 계산 ────────────────────────────────────────
     if find_btn:
         st.markdown("---")
-        st.markdown("### 🏆 추천 결과")
+        st.markdown(L["result_title"])
 
         style_col_map = {
             "Healing 힐링":       "healing_score",
@@ -507,7 +615,7 @@ with tab2:
         """, unsafe_allow_html=True)
 
         # TOP 3 랭킹
-        st.markdown("#### 📊 전체 동네 매칭 점수")
+        st.markdown(L["rank_title"])
         r_cols = st.columns(3)
         medals = ["🥇", "🥈", "🥉"]
         for i, (_, row) in enumerate(ranked.head(3).iterrows()):
@@ -526,7 +634,7 @@ with tab2:
                         <div style='background:{color}; width:{pct}%;
                                     height:100%; border-radius:20px'></div>
                     </div>
-                    <div style='font-size:12px; color:#888'>Match: {pct}%</div>
+                    <div style='font-size:12px; color:#888'>{L["match_label"]}: {pct}%</div>
                 </div>
                 """, unsafe_allow_html=True)
 
@@ -560,7 +668,7 @@ with tab3:
     st.markdown("### 🏘️ Neighborhood Profiles")
 
     selected_nb = st.selectbox(
-        "동네를 선택해서 자세한 정보를 보세요:",
+        L["nb_select"],
         nb["neighborhood"].tolist(),
         format_func=lambda x: f"{x}  ({nb[nb['neighborhood']==x]['neighborhood_kr'].values[0]})"
     )
@@ -650,7 +758,7 @@ with tab3:
         st.plotly_chart(fig_time, use_container_width=True)
 
     # 카테고리 비율 도넛 차트
-    st.markdown("#### 🗂️ Category Composition")
+    st.markdown(L["cat_comp"])
     fig_donut = px.pie(
         values=[row["cafe_ratio"], row["food_ratio"],
                 row["culture_ratio"], row["shopping_ratio"]],
@@ -666,7 +774,7 @@ with tab3:
     st.plotly_chart(fig_donut, use_container_width=True)
 
     # 여행 스타일 적합도
-    st.markdown("#### 🎯 Travel Style Match Score")
+    st.markdown(L["style_match"])
     style_scores = pd.DataFrame({
         "Style": ["🌿 Healing", "⚡ Active", "🍜 Food Travel", "🏛️ Culture"],
         "Score": [row["healing_score"], row["active_score"],
@@ -693,19 +801,19 @@ with tab3:
 # TAB 4 — KEY SPOTS
 # ═══════════════════════════════════════════════════════════
 with tab4:
-    st.markdown("### 📍 Key Spots by Neighborhood")
+    st.markdown(L["spots_title"])
 
     col_filter1, col_filter2 = st.columns(2)
     with col_filter1:
         selected_area = st.selectbox(
-            "동네 선택:",
+            L["area_filter"],
             ["All"] + nb["neighborhood"].tolist(),
             format_func=lambda x: "🗺️ 전체 보기" if x == "All"
                 else f"{x} ({nb[nb['neighborhood']==x]['neighborhood_kr'].values[0]})"
         )
     with col_filter2:
         selected_cat = st.selectbox(
-            "카테고리 선택:",
+            L["cat_filter"],
             ["All", "cafe", "landmark", "park", "museum", "market",
              "shopping", "nightlife", "kpop", "neighborhood"]
         )
@@ -716,11 +824,11 @@ with tab4:
     if selected_cat != "All":
         filtered = filtered[filtered["category"] == selected_cat]
 
-    must_only = st.checkbox("⭐ Must-visit 장소만 보기", value=False)
+    must_only = st.checkbox(L["must_filter"], value=False)
     if must_only:
         filtered = filtered[filtered["must_visit"] == True]
 
-    st.markdown(f"**{len(filtered)}개 장소** 표시 중")
+    st.markdown(f"**{len(filtered)}** " + L["spots_count"])
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
     # 스팟 카드 그리드
@@ -862,7 +970,7 @@ with tab4:
                             f"background:#f0f4ff; color:#2563EB; border-radius:8px; "
                             f"padding:5px 12px; font-size:12px; "
                             f"text-decoration:none; font-weight:500'>"
-                            f"🗺️ Google Maps에서 보기</a>",
+                            f"{L['gmaps_btn']}</a>",
                             unsafe_allow_html=True
                         )
                     st.markdown(
@@ -875,12 +983,12 @@ with tab4:
 # TAB 5 — DATA TABLE
 # ═══════════════════════════════════════════════════════════
 with tab5:
-    st.markdown("### 📊 Neighborhood Data Overview")
-    st.markdown("모든 동네의 데이터를 한눈에 비교해보세요.")
+    st.markdown(L["data_title"])
+    st.markdown(L["data_sub"])
 
     # 표시할 컬럼 선택
     display_cols = st.multiselect(
-        "보고 싶은 항목 선택:",
+        L["col_select"],
         ["neighborhood_kr", "google_rating", "review_count", "instagram_mentions",
          "vibe_score", "food_score", "shopping_score", "culture_score",
          "accessibility", "nightlife_score", "healing_score", "active_score",
@@ -941,7 +1049,7 @@ with tab5:
         st.dataframe(styled, use_container_width=True, height=400)
 
         # 비교 차트
-        st.markdown("#### 📈 Score Comparison Chart")
+        st.markdown(L["compare_title"])
         score_cols_chart = ["vibe_score", "food_score", "shopping_score",
                             "culture_score", "accessibility", "nightlife_score"]
         score_cols_available = [c for c in score_cols_chart if c in nb.columns]
@@ -982,7 +1090,7 @@ with tab5:
         # 다운로드 버튼
         csv_export = nb.to_csv(index=False).encode("utf-8")
         st.download_button(
-            label="📥 데이터 다운로드 (CSV)",
+            label=L["dl_btn"],
             data=csv_export,
             file_name="seoul_neighborhoods_data.csv",
             mime="text/csv"
@@ -993,11 +1101,8 @@ with tab5:
 # TAB 6 — SNS VS REALITY
 # ═══════════════════════════════════════════════════════════
 with tab6:
-    st.markdown("### 📸 SNS Popularity vs. Real Satisfaction")
-    st.markdown(
-        "Instagram 언급량이 많은 동네가 실제로도 만족도가 높을까요? "
-        "데이터로 확인해봐요!"
-    )
+    st.markdown(L["sns_title"])
+    st.markdown(L["sns_sub"])
 
     # ── 인트로 인사이트 카드 3개 ────────────────────────────
     nb_sorted_insta = nb.sort_values("instagram_mentions", ascending=False)
@@ -1067,8 +1172,8 @@ with tab6:
     st.markdown("<div style='height:24px'></div>", unsafe_allow_html=True)
 
     # ── 메인 산점도 ──────────────────────────────────────────
-    st.markdown("#### 🔍 Instagram Mentions vs. Google Rating")
-    st.caption("버블 크기 = 리뷰 수 (데이터 신뢰도) | 오른쪽 위 = SNS도 인기, 평점도 높음")
+    st.markdown(L["sns_scatter"])
+    st.caption(L["sns_scatter_cap"])
 
     fig_scatter = __import__('plotly.express', fromlist=['scatter']).scatter(
         nb,
@@ -1116,21 +1221,21 @@ with tab6:
     fig_scatter.add_annotation(
         x=nb["instagram_mentions"].max() * 0.92,
         y=nb["google_rating"].max() * 0.998,
-        text="🌟 SNS 인기 + 고평점",
+        text=L["quad1"],
         showarrow=False, font=dict(size=11, color="#16a34a"),
         bgcolor="#dcfce7", borderpad=4
     )
     fig_scatter.add_annotation(
         x=nb["instagram_mentions"].min() * 1.05 + 50000,
         y=nb["google_rating"].max() * 0.998,
-        text="💎 숨은 보석",
+        text=L["quad2"],
         showarrow=False, font=dict(size=11, color="#7c3aed"),
         bgcolor="#ede9fe", borderpad=4
     )
     fig_scatter.add_annotation(
         x=nb["instagram_mentions"].max() * 0.92,
         y=nb["google_rating"].min() * 1.002,
-        text="📸 SNS만 화려",
+        text=L["quad3"],
         showarrow=False, font=dict(size=11, color="#dc2626"),
         bgcolor="#fee2e2", borderpad=4
     )
@@ -1153,8 +1258,8 @@ with tab6:
     st.plotly_chart(fig_scatter, use_container_width=True)
 
     # ── 갭 분석 바 차트 ──────────────────────────────────────
-    st.markdown("#### 📊 SNS 인기 순위 vs 평점 순위 — Gap 분석")
-    st.caption("양수(+) = 평점이 SNS보다 높음 (숨은 보석) | 음수(-) = SNS가 평점보다 높음 (과대평가)")
+    st.markdown(L["sns_gap"])
+    st.caption(L["sns_gap_cap"])
 
     gap_df = nb[["neighborhood_kr", "rank_gap"]].copy()
     gap_df = gap_df.sort_values("rank_gap", ascending=True)
@@ -1192,21 +1297,16 @@ with tab6:
     st.plotly_chart(fig_gap, use_container_width=True)
 
     # ── 인사이트 요약 ────────────────────────────────────────
-    st.markdown("#### 💡 Key Insights")
+    st.markdown(L["sns_insight"])
     col_ins1, col_ins2 = st.columns(2)
     with col_ins1:
         st.info(
-            f"📸 **SNS 버블 주의**\n\n"
-            f"성수동과 홍대는 Instagram 언급량이 압도적으로 높지만, "
-            f"실제 Google 평점은 북촌·연남동보다 낮아요. "
-            f"SNS 인기가 반드시 높은 만족도를 보장하지 않아요."
+            f"{L['ins1_title']}\n\n{L['ins1_body']}"
         )
     with col_ins2:
         st.success(
-            f"💎 **숨은 보석을 찾아라**\n\n"
-            f"{most_underrated['neighborhood_kr']}은(는) SNS에서 조용하지만 "
-            f"Google 평점이 높아요. "
-            f"관광객이 적고 현지인이 더 많이 찾는 진짜 로컬 스팟이에요!"
+            f"{L['ins2_title']}\n\n{most_underrated['neighborhood_kr']} "
+            f"is quiet on SNS but has a high Google rating — a true local gem!"
         )
 
 
@@ -1561,7 +1661,7 @@ Rules:
         f"<div style='font-size:22px; font-weight:700; margin:4px 0'>"
         f"🗓️ {nb_names_kr} {'하루 코스' if L == T['KO'] else 'Day Course'}</div>"
         f"<div style='font-size:13px; opacity:0.85'>"
-        f"{style_clean} · {who_clean} · {start_time} 출발</div>"
+        f"{st.session_state.itinerary_meta}</div>"
         f"</div>",
         unsafe_allow_html=True
     )

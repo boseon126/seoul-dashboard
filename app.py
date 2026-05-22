@@ -643,53 +643,70 @@ with tab4:
     rows = [filtered.iloc[i:i+cols_per_row]
             for i in range(0, len(filtered), cols_per_row)]
 
-    import html as html_module
     for row_group in rows:
         cols = st.columns(cols_per_row)
         for col, (_, spot) in zip(cols, row_group.iterrows()):
             nb_color = COLORS.get(spot["neighborhood"], "#888")
             emoji = CAT_EMOJI.get(spot["category"], "📍")
             price_label = PRICE_LABEL.get(str(spot.get("price_range", "$")), "보통")
+            spot_name    = str(spot["spot_name"])
+            spot_name_kr = str(spot["spot_name_kr"])
+            spot_desc    = str(spot["description"])[:88].replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;").replace("'","&#39;").replace("—","&mdash;").replace("–","&ndash;")
+            spot_nb      = str(spot["neighborhood"])
+            spot_rating  = str(spot["google_rating"])
+            is_must      = spot["must_visit"]
 
-            safe_name    = html_module.escape(str(spot["spot_name"]))
-            safe_name_kr = html_module.escape(str(spot["spot_name_kr"]))
-            safe_desc    = html_module.escape(str(spot["description"])[:90])
-            safe_nb      = html_module.escape(str(spot["neighborhood"]))
-            safe_rating  = html_module.escape(str(spot["google_rating"]))
-
-            must_badge = (
-                '<span style="background:#FFD700; color:#333; border-radius:20px; '
-                'padding:2px 8px; font-size:11px; font-weight:600">&#11088; Must Visit</span>'
-                if spot["must_visit"] else ""
-            )
             with col:
-                st.markdown(f"""
-                <div style='background:white; border-radius:12px; padding:16px;
-                            box-shadow:0 2px 8px rgba(0,0,0,0.07);
-                            border-top:3px solid {nb_color}; margin-bottom:8px;
-                            min-height:160px'>
-                    <div style='display:flex; justify-content:space-between;
-                                align-items:flex-start; margin-bottom:8px'>
-                        <span style='font-size:22px'>{emoji}</span>
-                        {must_badge}
-                    </div>
-                    <b style='font-size:14px; color:#1E3A5F'>{safe_name}</b><br>
-                    <span style='color:#666; font-size:12px'>{safe_name_kr}</span>
-                    <div style='margin:8px 0; font-size:12px; color:#555;
-                                line-height:1.5'>
-                        {safe_desc}...
-                    </div>
-                    <div style='display:flex; gap:8px; font-size:11px; color:#888;
-                                flex-wrap:wrap; margin-top:6px'>
-                        <span style='background:{nb_color}22; color:{nb_color};
-                                     border-radius:20px; padding:2px 8px'>
-                            {safe_nb}
-                        </span>
-                        <span>&#11088; {safe_rating}</span>
-                        <span>&#128176; {price_label}</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
+                with st.container():
+                    # 카드 상단 컬러 바
+                    st.markdown(
+                        f"<div style='height:4px; background:{nb_color}; "
+                        f"border-radius:8px 8px 0 0; margin-bottom:0'></div>",
+                        unsafe_allow_html=True
+                    )
+                    # 카드 내용
+                    with st.container():
+                        top_col, badge_col = st.columns([1, 1])
+                        with top_col:
+                            st.markdown(f"<span style='font-size:22px'>{emoji}</span>",
+                                        unsafe_allow_html=True)
+                        with badge_col:
+                            if is_must:
+                                st.markdown(
+                                    "<span style='background:#FFD700; color:#333; "
+                                    "border-radius:20px; padding:2px 8px; "
+                                    "font-size:11px; font-weight:600; "
+                                    "float:right'>⭐ Must Visit</span>",
+                                    unsafe_allow_html=True
+                                )
+
+                        st.markdown(
+                            f"<div style='font-size:14px; font-weight:700; "
+                            f"color:#1E3A5F; margin:4px 0 2px'>{spot_name}</div>",
+                            unsafe_allow_html=True
+                        )
+                        st.markdown(
+                            f"<div style='color:#666; font-size:12px; "
+                            f"margin-bottom:6px'>{spot_name_kr}</div>",
+                            unsafe_allow_html=True
+                        )
+                        st.markdown(
+                            f"<div style='font-size:12px; color:#555; "
+                            f"line-height:1.5; margin-bottom:8px'>{spot_desc}...</div>",
+                            unsafe_allow_html=True
+                        )
+                        tag_html = (
+                            f"<div style='display:flex; gap:6px; flex-wrap:wrap; "
+                            f"font-size:11px; color:#888'>"
+                            f"<span style='background:{nb_color}22; color:{nb_color}; "
+                            f"border-radius:20px; padding:2px 8px'>{spot_nb}</span>"
+                            f"<span>⭐ {spot_rating}</span>"
+                            f"<span>💰 {price_label}</span>"
+                            f"</div>"
+                        )
+                        st.markdown(tag_html, unsafe_allow_html=True)
+                    st.markdown("<hr style='margin:8px 0; border-color:#f0f0f0'>",
+                                unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════

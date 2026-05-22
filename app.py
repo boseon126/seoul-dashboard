@@ -12,6 +12,98 @@ st.set_page_config(
     layout="wide"
 )
 
+# ── Session State 초기화 ───────────────────────────────────
+if "itinerary_stops"   not in st.session_state: st.session_state.itinerary_stops   = None
+if "itinerary_budget"  not in st.session_state: st.session_state.itinerary_budget  = 0
+if "itinerary_title"   not in st.session_state: st.session_state.itinerary_title   = ""
+if "itinerary_meta"    not in st.session_state: st.session_state.itinerary_meta    = ""
+if "itinerary_map_nbs" not in st.session_state: st.session_state.itinerary_map_nbs = []
+if "lang"              not in st.session_state: st.session_state.lang              = "KO"
+
+# ── 언어 텍스트 딕셔너리 ───────────────────────────────────
+T = {
+    "KO": {
+        "title":        "🗺️ Seoul Neighborhood Travel Style Dashboard",
+        "subtitle":     "**나만의 서울 발견하기** — 내 여행 스타일에 맞는 동네를 찾아봐요",
+        "tab1":         "🗺️  지도 탐색",
+        "tab2":         "🎯  내 스타일 찾기",
+        "tab3":         "🏘️  동네 프로필",
+        "tab4":         "📍  주요 스팟",
+        "tab5":         "📊  데이터 표",
+        "tab6":         "📸  SNS vs 현실",
+        "tab7":         "🗓️  나만의 코스",
+        "stat1":        "동네",
+        "stat2":        "주요 스팟",
+        "stat3":        "여행 스타일",
+        "stat4":        "평균 평점",
+        "map_title":    "📍 서울 동네 탐색",
+        "map_caption":  "👆 마커를 클릭하거나 커서를 올리면 동네 정보를 볼 수 있어요!",
+        "map_legend":   "💡 범례: 색깔 원 = 동네 마커 | ⭐ 흰 별 = 주요 스팟",
+        "nb_overview":  "🏘️ 동네 한눈에 보기",
+        "planner_title":"🗓️ 나만의 서울 하루 코스",
+        "planner_sub":  "동네와 취향을 선택하면 맞춤 하루 여행 코스를 만들어드려요!",
+        "plan_step1":   "① 방문할 동네 선택 (1~3개)",
+        "plan_step2":   "② 여행 스타일",
+        "plan_step3":   "③ 여행 인원",
+        "plan_step4":   "④ 시작 시간",
+        "plan_btn":     "✨  나만의 코스 생성하기!",
+        "plan_preview": "💡 선택한 동네 미리보기",
+        "plan_warn":    "동네를 최소 1개 선택해주세요!",
+        "plan_budget":  "📊 하루 예상 총 비용",
+        "plan_map":     "#### 📍 코스 지도",
+        "transit_label":"이동",
+        "styles":       ["🌿 Healing — 여유롭고 감성적인 하루",
+                         "⚡ Active — 에너지 넘치고 바쁜 하루",
+                         "🍜 Food Travel — 먹방 중심 하루",
+                         "🏛️ Culture — 역사와 문화 탐방 하루"],
+        "who":          ["혼자 solo", "커플 couple", "친구들 friends", "가족 family"],
+        "preview_none": "왼쪽에서 동네를 선택해주세요!",
+        "generated":    "📋 Generated Itinerary",
+        "footer":       "📊 Data: Google Maps · 공개 여행 가이드 · 자체 조사 | 🛠️ Built with Streamlit, Folium & Plotly | Arts and Big Data — SKKU 2026",
+        "lang_toggle":  "🌐 English",
+    },
+    "EN": {
+        "title":        "🗺️ Seoul Neighborhood Travel Style Dashboard",
+        "subtitle":     "**Discover Your Personal Seoul** — Find the neighborhood that matches your travel style",
+        "tab1":         "🗺️  Map Explorer",
+        "tab2":         "🎯  Find My Style",
+        "tab3":         "🏘️  Neighborhoods",
+        "tab4":         "📍  Key Spots",
+        "tab5":         "📊  Data Table",
+        "tab6":         "📸  SNS vs Reality",
+        "tab7":         "🗓️  My Seoul Planner",
+        "stat1":        "Neighborhoods",
+        "stat2":        "Key Spots",
+        "stat3":        "Travel Styles",
+        "stat4":        "Avg Rating",
+        "map_title":    "📍 Explore Seoul's Neighborhoods",
+        "map_caption":  "👆 Click on any marker or hover to see neighborhood details!",
+        "map_legend":   "💡 Legend: Colored circle = neighborhood | ⭐ White star = key spot",
+        "nb_overview":  "🏘️ All Neighborhoods at a Glance",
+        "planner_title":"🗓️ My Seoul Day Planner",
+        "planner_sub":  "Select neighborhoods and preferences to get your custom day itinerary!",
+        "plan_step1":   "① Select neighborhoods to visit (1–3)",
+        "plan_step2":   "② Travel style",
+        "plan_step3":   "③ Traveling with",
+        "plan_step4":   "④ Start time",
+        "plan_btn":     "✨  Generate My Itinerary!",
+        "plan_preview": "💡 Selected neighborhoods preview",
+        "plan_warn":    "Please select at least one neighborhood!",
+        "plan_budget":  "📊 Estimated total budget for the day",
+        "plan_map":     "#### 📍 Itinerary Map",
+        "transit_label":"Transit",
+        "styles":       ["🌿 Healing — Relaxed and sensory day",
+                         "⚡ Active — Energetic and packed day",
+                         "🍜 Food Travel — Food-focused day",
+                         "🏛️ Culture — History and culture day"],
+        "who":          ["Solo", "Couple", "Friends", "Family"],
+        "preview_none": "Select a neighborhood on the left!",
+        "generated":    "📋 Generated Itinerary",
+        "footer":       "📊 Data: Google Maps · Public travel guides · Manual research | 🛠️ Built with Streamlit, Folium & Plotly | Arts and Big Data — SKKU 2026",
+        "lang_toggle":  "🌐 한국어",
+    },
+}
+
 # ── 커스텀 CSS ─────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -128,13 +220,22 @@ STYLE_EMOJI = {
 }
 
 # ── 메인 헤더 ──────────────────────────────────────────────
-st.markdown("""
+# 언어 토글
+_lang_col, _btn_col = st.columns([6, 1])
+with _btn_col:
+    if st.button(T[st.session_state.lang]["lang_toggle"], use_container_width=True):
+        st.session_state.lang = "EN" if st.session_state.lang == "KO" else "KO"
+        st.rerun()
+
+L = T[st.session_state.lang]
+
+st.markdown(f"""
 <div class="main-header">
     <h1 style="margin:0; font-size:32px; font-weight:700;">
-        🗺️ Seoul Neighborhood Travel Style Dashboard
+        {L["title"]}
     </h1>
     <p style="margin:8px 0 0; font-size:16px; opacity:0.85;">
-        Discover Your Personal Seoul — Find the neighborhood that matches your travel style
+        {L["subtitle"].replace("**","").replace("**","")}
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -142,46 +243,41 @@ st.markdown("""
 # ── 상단 통계 ──────────────────────────────────────────────
 c1, c2, c3, c4 = st.columns(4)
 with c1:
-    st.markdown("""<div class="stat-card">
+    st.markdown(f"""<div class="stat-card">
         <div style="font-size:28px; font-weight:700; color:#1E3A5F;">9</div>
-        <div style="font-size:13px; color:#888; margin-top:4px;">Neighborhoods</div>
+        <div style="font-size:13px; color:#888; margin-top:4px;">{L["stat1"]}</div>
     </div>""", unsafe_allow_html=True)
 with c2:
-    st.markdown("""<div class="stat-card">
+    st.markdown(f"""<div class="stat-card">
         <div style="font-size:28px; font-weight:700; color:#2563EB;">37</div>
-        <div style="font-size:13px; color:#888; margin-top:4px;">Key Spots</div>
+        <div style="font-size:13px; color:#888; margin-top:4px;">{L["stat2"]}</div>
     </div>""", unsafe_allow_html=True)
 with c3:
-    st.markdown("""<div class="stat-card">
+    st.markdown(f"""<div class="stat-card">
         <div style="font-size:28px; font-weight:700; color:#F0A500;">4</div>
-        <div style="font-size:13px; color:#888; margin-top:4px;">Travel Styles</div>
+        <div style="font-size:13px; color:#888; margin-top:4px;">{L["stat3"]}</div>
     </div>""", unsafe_allow_html=True)
 with c4:
     avg_rating = nb["google_rating"].mean()
     st.markdown(f"""<div class="stat-card">
         <div style="font-size:28px; font-weight:700; color:#52B788;">⭐ {avg_rating:.1f}</div>
-        <div style="font-size:13px; color:#888; margin-top:4px;">Avg Google Rating</div>
+        <div style="font-size:13px; color:#888; margin-top:4px;">{L["stat4"]}</div>
     </div>""", unsafe_allow_html=True)
 
 st.markdown("<div style='margin:20px 0'></div>", unsafe_allow_html=True)
 
 # ── 탭 구성 ───────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
-    "🗺️  Map Explorer",
-    "🎯  Find My Style",
-    "🏘️  Neighborhoods",
-    "📍  Key Spots",
-    "📊  Data Table",
-    "📸  SNS vs Reality",
-    "🗓️  My Seoul Planner",
+    L["tab1"], L["tab2"], L["tab3"], L["tab4"],
+    L["tab5"], L["tab6"], L["tab7"],
 ])
 
 # ═══════════════════════════════════════════════════════════
 # TAB 1 — MAP EXPLORER
 # ═══════════════════════════════════════════════════════════
 with tab1:
-    st.markdown("### 📍 Interactive Seoul Map")
-    st.caption("마커 위에 커서를 올리거나 클릭하면 동네 정보를 볼 수 있어요!")
+    st.markdown("### " + L["map_title"])
+    st.caption(L["map_caption"])
 
     m = folium.Map(
         location=[37.5665, 126.9780],
@@ -274,13 +370,7 @@ with tab1:
 
     st_folium(m, width=None, height=560, use_container_width=True)
 
-    st.markdown("""
-    <div style='background:#f0f4ff; border-radius:10px; padding:12px 16px;
-                font-size:13px; color:#444; margin-top:8px'>
-        💡 <b>범례:</b> 색깔 원 = 동네 마커 (클릭/호버) &nbsp;|&nbsp;
-        ⭐ 흰 별 = 주요 스팟 (must-visit 장소)
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("<div style='background:#f0f4ff; border-radius:10px; padding:12px 16px; font-size:13px; color:#444; margin-top:8px'>" + L["map_legend"] + "</div>", unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════
@@ -1125,7 +1215,7 @@ with tab6:
 # TAB 7 — MY SEOUL PLANNER
 # ═══════════════════════════════════════════════════════════
 with tab7:
-    st.markdown("### 🗓️ My Seoul Day Planner")
+    st.markdown("### " + L["planner_title"])
     st.markdown("동네와 취향을 선택하면 **AI가 나만의 하루 여행 코스**를 만들어드려요!")
 
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
@@ -1133,7 +1223,7 @@ with tab7:
     p_col1, p_col2 = st.columns([1.2, 1])
 
     with p_col1:
-        st.markdown("#### ① 방문할 동네 선택 (1~3개)")
+        st.markdown("#### " + L["plan_step1"])
         selected_nbs = st.multiselect(
             "",
             nb["neighborhood"].tolist(),
@@ -1146,25 +1236,22 @@ with tab7:
             label_visibility="collapsed"
         )
 
-        st.markdown("#### ② 여행 스타일")
+        st.markdown("#### " + L["plan_step2"])
         planner_style = st.selectbox(
             "",
-            ["🌿 Healing — 여유롭고 감성적인 하루",
-             "⚡ Active — 에너지 넘치고 바쁜 하루",
-             "🍜 Food Travel — 먹방 중심 하루",
-             "🏛️ Culture — 역사와 문화 탐방 하루"],
+            L["styles"],
             label_visibility="collapsed"
         )
 
-        st.markdown("#### ③ 여행 인원")
+        st.markdown("#### " + L["plan_step3"])
         planner_who = st.radio(
             "",
-            ["혼자 solo", "커플 couple", "친구들 friends", "가족 family"],
+            L["who"],
             horizontal=True,
             label_visibility="collapsed"
         )
 
-        st.markdown("#### ④ 시작 시간")
+        st.markdown("#### " + L["plan_step4"])
         start_time = st.select_slider(
             "",
             options=["08:00", "09:00", "10:00", "11:00", "12:00"],
@@ -1173,13 +1260,13 @@ with tab7:
         )
 
         generate_btn = st.button(
-            "✨  AI로 나만의 코스 생성하기!",
+            L["plan_btn"],
             use_container_width=True,
             type="primary"
         )
 
     with p_col2:
-        st.markdown("#### 💡 선택한 동네 미리보기")
+        st.markdown("#### " + L["plan_preview"])
         if selected_nbs:
             for nb_name in selected_nbs:
                 row_prev = nb[nb["neighborhood"] == nb_name].iloc[0]
@@ -1199,14 +1286,24 @@ with tab7:
                     unsafe_allow_html=True
                 )
         else:
-            st.info("왼쪽에서 동네를 선택해주세요!")
+            st.info(L["preview_none"])
 
     # ── AI 코스 생성 ─────────────────────────────────────────
     if generate_btn:
         if not selected_nbs:
-            st.warning("동네를 최소 1개 선택해주세요!")
+            st.warning(L["plan_warn"])
         else:
-            st.markdown("---")
+            # session_state 초기화 (새로 생성)
+            st.session_state.itinerary_stops   = None
+            st.session_state.itinerary_budget  = 0
+            st.session_state.itinerary_map_nbs = list(selected_nbs)
+            st.session_state.itinerary_title   = " + ".join([
+                nb[nb["neighborhood"]==n]["neighborhood_kr"].values[0]
+                for n in selected_nbs
+            ])
+            style_clean_save = planner_style.split("—")[0].strip()
+            who_clean_save   = planner_who.split(" ")[0]
+            st.session_state.itinerary_meta = f"{style_clean_save} · {who_clean_save} · {start_time}"
 
             # 선택된 동네 데이터 수집
             nb_details = []
@@ -1444,135 +1541,134 @@ Rules:
                     total_budget += bud
                     current_time = next_time(current_time, dur)
 
-            # ── 결과 헤더 ──
-            nb_names_kr = " + ".join([
-                nb[nb["neighborhood"]==n]["neighborhood_kr"].values[0]
-                for n in selected_nbs
-            ])
+            # session_state에 저장
+            st.session_state.itinerary_stops  = stops
+            st.session_state.itinerary_budget = total_budget
+
+
+    # ── 결과 표시 (session_state 기반 — 버튼 후에도 유지) ──
+    if st.session_state.itinerary_stops:
+        stops       = st.session_state.itinerary_stops
+        total_budget = st.session_state.itinerary_budget
+        selected_nbs_display = st.session_state.itinerary_map_nbs
+        st.markdown("---")
+    # ── 결과 헤더 ──
+    nb_names_kr = st.session_state.itinerary_title
+    st.markdown(
+        f"<div style='background:linear-gradient(135deg,#1E3A5F,#2563EB); "
+        f"color:white; border-radius:16px; padding:20px 24px; margin-bottom:20px'>"
+        f"<div style='font-size:13px; opacity:0.8'>{L['generated']}</div>"
+        f"<div style='font-size:22px; font-weight:700; margin:4px 0'>"
+        f"🗓️ {nb_names_kr} {'하루 코스' if L == T['KO'] else 'Day Course'}</div>"
+        f"<div style='font-size:13px; opacity:0.85'>"
+        f"{style_clean} · {who_clean} · {start_time} 출발</div>"
+        f"</div>",
+        unsafe_allow_html=True
+    )
+
+    # ── 타임라인 ──
+    CAT_EMOJI_PLAN = {
+        "cafe": "☕", "landmark": "🏛️", "park": "🌿",
+        "museum": "🖼️", "market": "🛒", "shopping": "🛍️",
+        "nightlife": "🌙", "kpop": "🎵", "neighborhood": "📍",
+    }
+    for stop in stops:
+        if stop["type"] == "transit":
+            c = COLORS.get(stop["nb"], "#888")
             st.markdown(
-                f"<div style='background:linear-gradient(135deg,#1E3A5F,#2563EB); "
-                f"color:white; border-radius:16px; padding:20px 24px; margin-bottom:20px'>"
-                f"<div style='font-size:13px; opacity:0.8'>📋 Generated Itinerary</div>"
-                f"<div style='font-size:22px; font-weight:700; margin:4px 0'>"
-                f"🗓️ {nb_names_kr} 하루 코스</div>"
-                f"<div style='font-size:13px; opacity:0.85'>"
-                f"{style_clean} · {who_clean} · {start_time} 출발</div>"
+                f"<div style='display:flex; align-items:center; gap:12px; "
+                f"padding:10px 16px; margin:6px 0; background:#f8f9fa; "
+                f"border-radius:10px; border-left:3px dashed {c}'>"
+                f"<span style='font-size:18px'>🚇</span>"
+                f"<div>"
+                f"<span style='font-size:12px; color:#888'>{stop['time']} {L['transit_label']}</span><br>"
+                f"<span style='font-size:13px; color:#555; font-weight:500'>"
+                f"{stop['text']}</span>"
+                f"</div></div>",
+                unsafe_allow_html=True
+            )
+        else:
+            c = COLORS.get(stop["nb"], "#2563EB")
+            emoji = CAT_EMOJI_PLAN.get(stop["cat"], "📍")
+            bud_text = f"₩{stop['budget']:,}" if stop["budget"] > 0 else "무료"
+            must_badge = (
+                "<span style='background:#FFD700; color:#333; border-radius:20px; "
+                "padding:1px 8px; font-size:11px; margin-left:6px'>⭐ Must</span>"
+                if stop["is_must"] else ""
+            )
+            st.markdown(
+                f"<div style='background:white; border-radius:12px; "
+                f"padding:16px 18px; margin:6px 0; "
+                f"box-shadow:0 2px 6px rgba(0,0,0,0.06); "
+                f"border-left:4px solid {c}'>"
+                f"<div style='display:flex; justify-content:space-between; "
+                f"align-items:center; margin-bottom:6px'>"
+                f"<span style='font-size:13px; color:{c}; font-weight:700'>"
+                f"⏰ {stop['time']}</span>"
+                f"<span style='font-size:11px; color:#888; "
+                f"background:#f0f4ff; padding:2px 8px; border-radius:20px'>"
+                f"💰 {bud_text}</span>"
+                f"</div>"
+                f"<div style='font-size:15px; font-weight:700; color:#1E3A5F'>"
+                f"{emoji} {stop['name']}{must_badge}</div>"
+                f"<div style='font-size:12px; color:#888; margin:2px 0 6px'>"
+                f"{stop['name_kr']} · {stop['nb_kr']}</div>"
+                f"<div style='font-size:13px; color:#555; line-height:1.6'>"
+                f"{stop['comment']}</div>"
                 f"</div>",
                 unsafe_allow_html=True
             )
 
-            # ── 타임라인 ──
-            CAT_EMOJI_PLAN = {
-                "cafe": "☕", "landmark": "🏛️", "park": "🌿",
-                "museum": "🖼️", "market": "🛒", "shopping": "🛍️",
-                "nightlife": "🌙", "kpop": "🎵", "neighborhood": "📍",
-            }
-            for stop in stops:
-                if stop["type"] == "transit":
-                    c = COLORS.get(stop["nb"], "#888")
-                    st.markdown(
-                        f"<div style='display:flex; align-items:center; gap:12px; "
-                        f"padding:10px 16px; margin:6px 0; background:#f8f9fa; "
-                        f"border-radius:10px; border-left:3px dashed {c}'>"
-                        f"<span style='font-size:18px'>🚇</span>"
-                        f"<div>"
-                        f"<span style='font-size:12px; color:#888'>{stop['time']} 이동</span><br>"
-                        f"<span style='font-size:13px; color:#555; font-weight:500'>"
-                        f"{stop['text']}</span>"
-                        f"</div></div>",
-                        unsafe_allow_html=True
-                    )
-                else:
-                    c = COLORS.get(stop["nb"], "#2563EB")
-                    emoji = CAT_EMOJI_PLAN.get(stop["cat"], "📍")
-                    bud_text = f"₩{stop['budget']:,}" if stop["budget"] > 0 else "무료"
-                    must_badge = (
-                        "<span style='background:#FFD700; color:#333; border-radius:20px; "
-                        "padding:1px 8px; font-size:11px; margin-left:6px'>⭐ Must</span>"
-                        if stop["is_must"] else ""
-                    )
-                    st.markdown(
-                        f"<div style='background:white; border-radius:12px; "
-                        f"padding:16px 18px; margin:6px 0; "
-                        f"box-shadow:0 2px 6px rgba(0,0,0,0.06); "
-                        f"border-left:4px solid {c}'>"
-                        f"<div style='display:flex; justify-content:space-between; "
-                        f"align-items:center; margin-bottom:6px'>"
-                        f"<span style='font-size:13px; color:{c}; font-weight:700'>"
-                        f"⏰ {stop['time']}</span>"
-                        f"<span style='font-size:11px; color:#888; "
-                        f"background:#f0f4ff; padding:2px 8px; border-radius:20px'>"
-                        f"💰 {bud_text}</span>"
-                        f"</div>"
-                        f"<div style='font-size:15px; font-weight:700; color:#1E3A5F'>"
-                        f"{emoji} {stop['name']}{must_badge}</div>"
-                        f"<div style='font-size:12px; color:#888; margin:2px 0 6px'>"
-                        f"{stop['name_kr']} · {stop['nb_kr']}</div>"
-                        f"<div style='font-size:13px; color:#555; line-height:1.6'>"
-                        f"{stop['comment']}</div>"
-                        f"</div>",
-                        unsafe_allow_html=True
-                    )
+    # ── 총 예산 ──
+    st.markdown(
+        f"<div style='background:#f0f9f0; border:1px solid #86efac; "
+        f"border-radius:12px; padding:16px 20px; margin-top:16px; "
+        f"display:flex; justify-content:space-between; align-items:center'>"
+        f"<span style='font-size:15px; font-weight:700; color:#166534'>"
+        f"{L['plan_budget']}</span>"
+        f"<span style='font-size:22px; font-weight:700; color:#166534'>"
+        f"₩{total_budget:,}</span>"
+        f"</div>",
+        unsafe_allow_html=True
+    )
 
-            # ── 총 예산 ──
-            st.markdown(
-                f"<div style='background:#f0f9f0; border:1px solid #86efac; "
-                f"border-radius:12px; padding:16px 20px; margin-top:16px; "
-                f"display:flex; justify-content:space-between; align-items:center'>"
-                f"<span style='font-size:15px; font-weight:700; color:#166534'>"
-                f"📊 하루 예상 총 비용</span>"
-                f"<span style='font-size:22px; font-weight:700; color:#166534'>"
-                f"₩{total_budget:,}</span>"
-                f"</div>",
-                unsafe_allow_html=True
-            )
+    # ── 코스 지도 ──
+    st.markdown(L["plan_map"])
+    import folium
+    from streamlit_folium import st_folium as _st_folium
+    m_plan = folium.Map(
+        location=[37.5665, 126.9780],
+        zoom_start=13,
+        tiles="CartoDB positron"
+    )
+    for i, nb_name in enumerate(selected_nbs):
+        row_m = nb[nb["neighborhood"] == nb_name].iloc[0]
+        c = COLORS.get(nb_name, "#888")
+        folium.Marker(
+            location=[row_m["lat"], row_m["lng"]],
+            icon=folium.DivIcon(
+                html=(f"<div style='background:{c}; color:white; "
+                      f"border-radius:50%; width:32px; height:32px; "
+                      f"display:flex; align-items:center; justify-content:center; "
+                      f"font-weight:700; font-size:14px; "
+                      f"box-shadow:0 2px 6px rgba(0,0,0,0.3)'>{i+1}</div>"),
+                icon_size=(32, 32), icon_anchor=(16, 16)
+            ),
+            tooltip=f"{i+1}. {row_m['neighborhood_kr']}"
+        ).add_to(m_plan)
+        for _, sp in spots[
+            (spots["neighborhood"] == nb_name) &
+            (spots["must_visit"] == True)
+        ].iterrows():
+            folium.CircleMarker(
+                location=[sp["lat"], sp["lng"]],
+                radius=7, color=c, fill=True,
+                fill_color=c, fill_opacity=0.7,
+                tooltip=sp["spot_name"]
+            ).add_to(m_plan)
+    _st_folium(m_plan, width=None, height=400, use_container_width=True)
 
-            # ── 코스 지도 ──
-            st.markdown("#### 📍 코스 지도")
-            import folium
-            from streamlit_folium import st_folium as _st_folium
-            m_plan = folium.Map(
-                location=[37.5665, 126.9780],
-                zoom_start=13,
-                tiles="CartoDB positron"
-            )
-            for i, nb_name in enumerate(selected_nbs):
-                row_m = nb[nb["neighborhood"] == nb_name].iloc[0]
-                c = COLORS.get(nb_name, "#888")
-                folium.Marker(
-                    location=[row_m["lat"], row_m["lng"]],
-                    icon=folium.DivIcon(
-                        html=(f"<div style='background:{c}; color:white; "
-                              f"border-radius:50%; width:32px; height:32px; "
-                              f"display:flex; align-items:center; justify-content:center; "
-                              f"font-weight:700; font-size:14px; "
-                              f"box-shadow:0 2px 6px rgba(0,0,0,0.3)'>{i+1}</div>"),
-                        icon_size=(32, 32), icon_anchor=(16, 16)
-                    ),
-                    tooltip=f"{i+1}. {row_m['neighborhood_kr']}"
-                ).add_to(m_plan)
-                for _, sp in spots[
-                    (spots["neighborhood"] == nb_name) &
-                    (spots["must_visit"] == True)
-                ].iterrows():
-                    folium.CircleMarker(
-                        location=[sp["lat"], sp["lng"]],
-                        radius=7, color=c, fill=True,
-                        fill_color=c, fill_opacity=0.7,
-                        tooltip=sp["spot_name"]
-                    ).add_to(m_plan)
-            _st_folium(m_plan, width=None, height=400, use_container_width=True)
 
 
 # ── 푸터 ──────────────────────────────────────────────────
-st.markdown("""
-<div style='background:white; border-radius:12px; padding:16px 24px;
-            margin-top:32px; text-align:center;
-            box-shadow:0 2px 8px rgba(0,0,0,0.06)'>
-    <p style='margin:0; color:#888; font-size:13px'>
-        📊 Data: Google Maps · Public travel guides · Manual research |
-        🛠️ Built with Streamlit, Folium & Plotly |
-        Arts and Big Data — SKKU 2026
-    </p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown(f"<div style='background:white; border-radius:12px; padding:16px 24px; margin-top:32px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06)'><p style='margin:0; color:#888; font-size:13px'>{L['footer']}</p></div>", unsafe_allow_html=True)

@@ -643,15 +643,23 @@ with tab4:
     rows = [filtered.iloc[i:i+cols_per_row]
             for i in range(0, len(filtered), cols_per_row)]
 
+    import html as html_module
     for row_group in rows:
         cols = st.columns(cols_per_row)
         for col, (_, spot) in zip(cols, row_group.iterrows()):
             nb_color = COLORS.get(spot["neighborhood"], "#888")
             emoji = CAT_EMOJI.get(spot["category"], "📍")
             price_label = PRICE_LABEL.get(str(spot.get("price_range", "$")), "보통")
+
+            safe_name    = html_module.escape(str(spot["spot_name"]))
+            safe_name_kr = html_module.escape(str(spot["spot_name_kr"]))
+            safe_desc    = html_module.escape(str(spot["description"])[:90])
+            safe_nb      = html_module.escape(str(spot["neighborhood"]))
+            safe_rating  = html_module.escape(str(spot["google_rating"]))
+
             must_badge = (
                 '<span style="background:#FFD700; color:#333; border-radius:20px; '
-                'padding:2px 8px; font-size:11px; font-weight:600">⭐ Must Visit</span>'
+                'padding:2px 8px; font-size:11px; font-weight:600">&#11088; Must Visit</span>'
                 if spot["must_visit"] else ""
             )
             with col:
@@ -665,20 +673,20 @@ with tab4:
                         <span style='font-size:22px'>{emoji}</span>
                         {must_badge}
                     </div>
-                    <b style='font-size:14px; color:#1E3A5F'>{spot["spot_name"]}</b><br>
-                    <span style='color:#666; font-size:12px'>{spot["spot_name_kr"]}</span>
+                    <b style='font-size:14px; color:#1E3A5F'>{safe_name}</b><br>
+                    <span style='color:#666; font-size:12px'>{safe_name_kr}</span>
                     <div style='margin:8px 0; font-size:12px; color:#555;
                                 line-height:1.5'>
-                        {spot["description"][:90]}...
+                        {safe_desc}...
                     </div>
                     <div style='display:flex; gap:8px; font-size:11px; color:#888;
                                 flex-wrap:wrap; margin-top:6px'>
                         <span style='background:{nb_color}22; color:{nb_color};
                                      border-radius:20px; padding:2px 8px'>
-                            {spot["neighborhood"]}
+                            {safe_nb}
                         </span>
-                        <span>⭐ {spot["google_rating"]}</span>
-                        <span>💰 {price_label}</span>
+                        <span>&#11088; {safe_rating}</span>
+                        <span>&#128176; {price_label}</span>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)

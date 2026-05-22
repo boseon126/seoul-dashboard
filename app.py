@@ -739,7 +739,7 @@ with tab5:
                     return "background-color: #f8d7da; color: #721c24"
             return ""
 
-        styled = table_df.style.applymap(
+        styled = table_df.style.map(
             color_score,
             subset=[c for c in table_df.columns
                     if any(x in c for x in

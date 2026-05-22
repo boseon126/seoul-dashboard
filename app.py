@@ -1555,6 +1555,64 @@ Rules:
                 },
             }
 
+            # 영어 코멘트
+            style_comments_en = {
+                "cafe": {
+                    "🌿 Healing": "Start your day slowly with a great coffee. Take time to admire the aesthetic interior!",
+                    "⚡ Active": "Quick energy boost! Grab a takeout and head to the next spot.",
+                    "🍜 Food Travel": "Try this neighborhood's signature drink — a must-taste!",
+                    "🏛️ Culture": "Rest for a moment at a cafe hidden in a historic alley.",
+                },
+                "landmark": {
+                    "🌿 Healing": "Walk slowly, take photos, and soak in the atmosphere.",
+                    "⚡ Active": "Hit the key highlights fast and move on!",
+                    "🍜 Food Travel": "After sightseeing, look for a nearby local restaurant.",
+                    "🏛️ Culture": "Read the info boards carefully and deepen your understanding of the history.",
+                },
+                "park": {
+                    "🌿 Healing": "Just sit on a bench and do nothing. True healing time!",
+                    "⚡ Active": "Go for a jog or rent a bike to burn some energy.",
+                    "🍜 Food Travel": "Grab a picnic lunch and eat in the park.",
+                    "🏛️ Culture": "Explore the park's historical significance and nearby cultural spaces.",
+                },
+                "museum": {
+                    "🌿 Healing": "Take your time admiring each piece and reflect quietly.",
+                    "⚡ Active": "Focus on the highlights and move through quickly.",
+                    "🍜 Food Travel": "Don't miss the museum cafe or restaurant for a meal.",
+                    "🏛️ Culture": "Make the most of the audio guide or docent tour.",
+                },
+                "market": {
+                    "🌿 Healing": "Find small joys browsing the market. Step into locals' daily life!",
+                    "⚡ Active": "Grab some street food fast and recharge!",
+                    "🍜 Food Travel": "The highlight of this itinerary! Taste a little of everything.",
+                    "🏛️ Culture": "Chat with long-time vendors and feel the history of Seoul.",
+                },
+                "shopping": {
+                    "🌿 Healing": "Find something from an indie brand you love — enjoy light, mindful shopping.",
+                    "⚡ Active": "Make a list in advance and shop efficiently!",
+                    "🍜 Food Travel": "Don't miss the food court in the mall.",
+                    "🏛️ Culture": "Look for traditional crafts or works by independent artists.",
+                },
+                "nightlife": {
+                    "🌿 Healing": "Wind down at a quiet bar listening to music.",
+                    "⚡ Active": "End the day with a bang at a club or live show!",
+                    "🍜 Food Travel": "Experience Seoul's late-night food culture properly.",
+                    "🏛️ Culture": "Feel the Seoul night at a jazz bar or indie music venue.",
+                },
+                "kpop": {
+                    "🌿 Healing": "Quietly trace the footsteps of your favorite artist.",
+                    "⚡ Active": "Enjoy a K-pop dance experience or fan shop tour!",
+                    "🍜 Food Travel": "Seek out restaurants frequented by your favorite idols.",
+                    "🏛️ Culture": "Explore the history and industry of Korean pop music.",
+                },
+                "neighborhood": {
+                    "🌿 Healing": "Follow the alleys wherever your feet take you — no rush.",
+                    "⚡ Active": "Quickly explore the whole neighborhood and find the best photo spots.",
+                    "🍜 Food Travel": "Enjoy the hunt for hidden local gems in this neighborhood.",
+                    "🏛️ Culture": "Walk the alleys while reflecting on the neighborhood's history and transformation.",
+                },
+            }
+
             # 이동 시간 (동네 간)
             travel_tips = {
                 ("Seongsu", "Hongdae"):   ("2호선 성수 → 홍대입구", 25),
@@ -1625,6 +1683,7 @@ Rules:
                     dur = durations.get(cat, 40)
                     bud = budgets.get(cat, 0)
                     comment = style_comments.get(cat, {}).get(style_key, "이 장소를 충분히 즐겨봐요!")
+                    comment_en = style_comments_en.get(cat, {}).get(style_key, "Enjoy this spot!")
                     stops.append({
                         "type": "spot",
                         "time": current_time,
@@ -1634,6 +1693,7 @@ Rules:
                         "nb": nb_name,
                         "nb_kr": nb_row["neighborhood_kr"],
                         "comment": comment,
+                        "comment_en": comment_en,
                         "budget": bud,
                         "duration": dur,
                         "is_must": sp["must_visit"],
@@ -1648,126 +1708,135 @@ Rules:
 
     # ── 결과 표시 (session_state 기반 — 버튼 후에도 유지) ──
     if st.session_state.itinerary_stops:
-        stops       = st.session_state.itinerary_stops
+        stops = st.session_state.itinerary_stops
         total_budget = st.session_state.itinerary_budget
         selected_nbs_display = st.session_state.itinerary_map_nbs
+        nb_names_kr = st.session_state.itinerary_title
         st.markdown("---")
-    # ── 결과 헤더 ──
-    nb_names_kr = st.session_state.itinerary_title
-    st.markdown(
-        f"<div style='background:linear-gradient(135deg,#1E3A5F,#2563EB); "
-        f"color:white; border-radius:16px; padding:20px 24px; margin-bottom:20px'>"
-        f"<div style='font-size:13px; opacity:0.8'>{L['generated']}</div>"
-        f"<div style='font-size:22px; font-weight:700; margin:4px 0'>"
-        f"🗓️ {nb_names_kr} {'하루 코스' if L == T['KO'] else 'Day Course'}</div>"
-        f"<div style='font-size:13px; opacity:0.85'>"
-        f"{st.session_state.itinerary_meta}</div>"
-        f"</div>",
-        unsafe_allow_html=True
-    )
 
-    # ── 타임라인 ──
-    CAT_EMOJI_PLAN = {
-        "cafe": "☕", "landmark": "🏛️", "park": "🌿",
-        "museum": "🖼️", "market": "🛒", "shopping": "🛍️",
-        "nightlife": "🌙", "kpop": "🎵", "neighborhood": "📍",
-    }
-    for stop in stops:
-        if stop["type"] == "transit":
-            c = COLORS.get(stop["nb"], "#888")
-            st.markdown(
-                f"<div style='display:flex; align-items:center; gap:12px; "
-                f"padding:10px 16px; margin:6px 0; background:#f8f9fa; "
-                f"border-radius:10px; border-left:3px dashed {c}'>"
-                f"<span style='font-size:18px'>🚇</span>"
-                f"<div>"
-                f"<span style='font-size:12px; color:#888'>{stop['time']} {L['transit_label']}</span><br>"
-                f"<span style='font-size:13px; color:#555; font-weight:500'>"
-                f"{stop['text']}</span>"
-                f"</div></div>",
-                unsafe_allow_html=True
-            )
-        else:
-            c = COLORS.get(stop["nb"], "#2563EB")
-            emoji = CAT_EMOJI_PLAN.get(stop["cat"], "📍")
-            bud_text = f"₩{stop['budget']:,}" if stop["budget"] > 0 else "무료"
-            must_badge = (
-                "<span style='background:#FFD700; color:#333; border-radius:20px; "
-                "padding:1px 8px; font-size:11px; margin-left:6px'>⭐ Must</span>"
-                if stop["is_must"] else ""
-            )
-            st.markdown(
-                f"<div style='background:white; border-radius:12px; "
-                f"padding:16px 18px; margin:6px 0; "
-                f"box-shadow:0 2px 6px rgba(0,0,0,0.06); "
-                f"border-left:4px solid {c}'>"
-                f"<div style='display:flex; justify-content:space-between; "
-                f"align-items:center; margin-bottom:6px'>"
-                f"<span style='font-size:13px; color:{c}; font-weight:700'>"
-                f"⏰ {stop['time']}</span>"
-                f"<span style='font-size:11px; color:#888; "
-                f"background:#f0f4ff; padding:2px 8px; border-radius:20px'>"
-                f"💰 {bud_text}</span>"
-                f"</div>"
-                f"<div style='font-size:15px; font-weight:700; color:#1E3A5F'>"
-                f"{emoji} {stop['name']}{must_badge}</div>"
-                f"<div style='font-size:12px; color:#888; margin:2px 0 6px'>"
-                f"{stop['name_kr']} · {stop['nb_kr']}</div>"
-                f"<div style='font-size:13px; color:#555; line-height:1.6'>"
-                f"{stop['comment']}</div>"
-                f"</div>",
-                unsafe_allow_html=True
-            )
+        # ── 결과 헤더 ──
+        day_label = "하루 코스" if st.session_state.lang == "KO" else "Day Course"
+        st.markdown(
+            f"<div style='background:linear-gradient(135deg,#1E3A5F,#2563EB); "
+            f"color:white; border-radius:16px; padding:20px 24px; margin-bottom:20px'>"
+            f"<div style='font-size:13px; opacity:0.8'>{L['generated']}</div>"
+            f"<div style='font-size:22px; font-weight:700; margin:4px 0'>"
+            f"🗓️ {nb_names_kr} {day_label}</div>"
+            f"<div style='font-size:13px; opacity:0.85'>"
+            f"{st.session_state.itinerary_meta}</div>"
+            f"</div>",
+            unsafe_allow_html=True
+        )
 
-    # ── 총 예산 ──
-    st.markdown(
-        f"<div style='background:#f0f9f0; border:1px solid #86efac; "
-        f"border-radius:12px; padding:16px 20px; margin-top:16px; "
-        f"display:flex; justify-content:space-between; align-items:center'>"
-        f"<span style='font-size:15px; font-weight:700; color:#166534'>"
-        f"{L['plan_budget']}</span>"
-        f"<span style='font-size:22px; font-weight:700; color:#166534'>"
-        f"₩{total_budget:,}</span>"
-        f"</div>",
-        unsafe_allow_html=True
-    )
+        # ── 타임라인 ──
+        CAT_EMOJI_PLAN = {
+            "cafe": "☕", "landmark": "🏛️", "park": "🌿",
+            "museum": "🖼️", "market": "🛒", "shopping": "🛍️",
+            "nightlife": "🌙", "kpop": "🎵", "neighborhood": "📍",
+        }
+        free_label = "Free" if st.session_state.lang == "EN" else "무료"
 
-    # ── 코스 지도 ──
-    st.markdown(L["plan_map"])
-    import folium
-    from streamlit_folium import st_folium as _st_folium
-    m_plan = folium.Map(
-        location=[37.5665, 126.9780],
-        zoom_start=13,
-        tiles="CartoDB positron"
-    )
-    for i, nb_name in enumerate(selected_nbs):
-        row_m = nb[nb["neighborhood"] == nb_name].iloc[0]
-        c = COLORS.get(nb_name, "#888")
-        folium.Marker(
-            location=[row_m["lat"], row_m["lng"]],
-            icon=folium.DivIcon(
-                html=(f"<div style='background:{c}; color:white; "
-                      f"border-radius:50%; width:32px; height:32px; "
-                      f"display:flex; align-items:center; justify-content:center; "
-                      f"font-weight:700; font-size:14px; "
-                      f"box-shadow:0 2px 6px rgba(0,0,0,0.3)'>{i+1}</div>"),
-                icon_size=(32, 32), icon_anchor=(16, 16)
-            ),
-            tooltip=f"{i+1}. {row_m['neighborhood_kr']}"
-        ).add_to(m_plan)
-        for _, sp in spots[
-            (spots["neighborhood"] == nb_name) &
-            (spots["must_visit"] == True)
-        ].iterrows():
-            folium.CircleMarker(
-                location=[sp["lat"], sp["lng"]],
-                radius=7, color=c, fill=True,
-                fill_color=c, fill_opacity=0.7,
-                tooltip=sp["spot_name"]
+        for stop in stops:
+            if stop["type"] == "transit":
+                c = COLORS.get(stop["nb"], "#888")
+                st.markdown(
+                    f"<div style='display:flex; align-items:center; gap:12px; "
+                    f"padding:10px 16px; margin:6px 0; background:#f8f9fa; "
+                    f"border-radius:10px; border-left:3px dashed {c}'>"
+                    f"<span style='font-size:18px'>🚇</span>"
+                    f"<div>"
+                    f"<span style='font-size:12px; color:#888'>{stop['time']} {L['transit_label']}</span><br>"
+                    f"<span style='font-size:13px; color:#555; font-weight:500'>"
+                    f"{stop['text']}</span>"
+                    f"</div></div>",
+                    unsafe_allow_html=True
+                )
+            else:
+                c = COLORS.get(stop["nb"], "#2563EB")
+                emoji = CAT_EMOJI_PLAN.get(stop["cat"], "📍")
+                bud_text = f"₩{stop['budget']:,}" if stop["budget"] > 0 else free_label
+                # 언어에 따라 코멘트 선택
+                raw_comment = stop.get("comment", "")
+                if st.session_state.lang == "EN":
+                    comment = stop.get("comment_en", raw_comment)
+                else:
+                    comment = raw_comment
+                must_badge = (
+                    "<span style='background:#FFD700; color:#333; border-radius:20px; "
+                    "padding:1px 8px; font-size:11px; margin-left:6px'>⭐ Must</span>"
+                    if stop["is_must"] else ""
+                )
+                st.markdown(
+                    f"<div style='background:white; border-radius:12px; "
+                    f"padding:16px 18px; margin:6px 0; "
+                    f"box-shadow:0 2px 6px rgba(0,0,0,0.06); "
+                    f"border-left:4px solid {c}'>"
+                    f"<div style='display:flex; justify-content:space-between; "
+                    f"align-items:center; margin-bottom:6px'>"
+                    f"<span style='font-size:13px; color:{c}; font-weight:700'>"
+                    f"⏰ {stop['time']}</span>"
+                    f"<span style='font-size:11px; color:#888; "
+                    f"background:#f0f4ff; padding:2px 8px; border-radius:20px'>"
+                    f"💰 {bud_text}</span>"
+                    f"</div>"
+                    f"<div style='font-size:15px; font-weight:700; color:#1E3A5F'>"
+                    f"{emoji} {stop['name']}{must_badge}</div>"
+                    f"<div style='font-size:12px; color:#888; margin:2px 0 6px'>"
+                    f"{stop['name_kr']} · {stop['nb_kr']}</div>"
+                    f"<div style='font-size:13px; color:#555; line-height:1.6'>"
+                    f"{comment}</div>"
+                    f"</div>",
+                    unsafe_allow_html=True
+                )
+
+        # ── 총 예산 ──
+        st.markdown(
+            f"<div style='background:#f0f9f0; border:1px solid #86efac; "
+            f"border-radius:12px; padding:16px 20px; margin-top:16px; "
+            f"display:flex; justify-content:space-between; align-items:center'>"
+            f"<span style='font-size:15px; font-weight:700; color:#166534'>"
+            f"{L['plan_budget']}</span>"
+            f"<span style='font-size:22px; font-weight:700; color:#166534'>"
+            f"₩{total_budget:,}</span>"
+            f"</div>",
+            unsafe_allow_html=True
+        )
+
+        # ── 코스 지도 ──
+        st.markdown(L["plan_map"])
+        import folium
+        from streamlit_folium import st_folium as _st_folium
+        m_plan = folium.Map(
+            location=[37.5665, 126.9780],
+            zoom_start=13,
+            tiles="CartoDB positron"
+        )
+        for i, nb_name in enumerate(selected_nbs_display):
+            row_m = nb[nb["neighborhood"] == nb_name].iloc[0]
+            c = COLORS.get(nb_name, "#888")
+            folium.Marker(
+                location=[row_m["lat"], row_m["lng"]],
+                icon=folium.DivIcon(
+                    html=(f"<div style='background:{c}; color:white; "
+                          f"border-radius:50%; width:32px; height:32px; "
+                          f"display:flex; align-items:center; justify-content:center; "
+                          f"font-weight:700; font-size:14px; "
+                          f"box-shadow:0 2px 6px rgba(0,0,0,0.3)'>{i+1}</div>"),
+                    icon_size=(32, 32), icon_anchor=(16, 16)
+                ),
+                tooltip=f"{i+1}. {row_m['neighborhood_kr']}"
             ).add_to(m_plan)
-    _st_folium(m_plan, width=None, height=400, use_container_width=True)
-
+            for _, sp in spots[
+                (spots["neighborhood"] == nb_name) &
+                (spots["must_visit"] == True)
+            ].iterrows():
+                folium.CircleMarker(
+                    location=[sp["lat"], sp["lng"]],
+                    radius=7, color=c, fill=True,
+                    fill_color=c, fill_opacity=0.7,
+                    tooltip=sp["spot_name"]
+                ).add_to(m_plan)
+        _st_folium(m_plan, width=None, height=400, use_container_width=True)
 
 
 # ── 푸터 ──────────────────────────────────────────────────

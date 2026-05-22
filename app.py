@@ -808,5 +808,3 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
-st.divider()
-st.caption("📊 Data: Google Maps · Public travel guides · Manual research | Built with Streamlit & Folium")

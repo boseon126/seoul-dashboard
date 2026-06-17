@@ -1,0 +1,61 @@
+neighborhood,month,visitor_index,avg_temp_c,note
+Hongdae,1,68,-2,Winter low season but indoor venues stay busy
+Hongdae,2,70,1,Valentine season boosts cafe and club visits
+Hongdae,3,78,7,Spring break brings university crowds
+Hongdae,4,85,13,Cherry blossom season nearby parks
+Hongdae,5,90,18,Festival season peaks with street performances
+Hongdae,6,88,23,Early summer nightlife still strong
+Hongdae,7,82,27,Heat and rain reduce outdoor street activity
+Hongdae,8,80,28,Summer vacation crowd from tourists
+Hongdae,9,92,23,Best month weather plus new semester energy
+Hongdae,10,95,17,Peak season ideal weather and festivals
+Hongdae,11,84,9,Cooling temps but indoor clubs remain busy
+Hongdae,12,90,1,Year-end parties and holiday lights
+Seongsu,1,62,-2,Quiet winter month for outdoor cafes
+Seongsu,2,65,1,Steady cafe visits despite cold
+Seongsu,3,75,7,Rising as Seoul Forest reopens for walks
+Seongsu,4,88,13,Cherry blossoms at Seoul Forest draw crowds
+Seongsu,5,92,18,Peak season for park picnics and cafes
+Seongsu,6,85,23,Warm weather keeps riverside park busy
+Seongsu,7,70,27,Rainy season reduces outdoor park visits
+Seongsu,8,72,28,Heat keeps visitors in air-conditioned cafes
+Seongsu,9,90,23,Comfortable weather returns visitors to parks
+Seongsu,10,96,17,Best month for instagram-worthy fall foliage
+Seongsu,11,80,9,Cooling but cafes remain a steady draw
+Seongsu,12,78,1,Holiday cafe-hopping season
+Bukchon,1,55,-2,Lowest season due to cold for walking tours
+Bukchon,2,58,1,Slight rise around Lunar New Year
+Bukchon,3,72,7,Spring brings hanok village walking tours
+Bukchon,4,90,13,Cherry blossoms near palaces peak demand
+Bukchon,5,88,18,Comfortable weather for palace visits
+Bukchon,6,75,23,Warm season still good for early morning tours
+Bukchon,7,58,27,Rainy season discourages outdoor walking
+Bukchon,8,60,28,Heat reduces walking tour numbers
+Bukchon,9,82,23,Pleasant fall weather returns visitors
+Bukchon,10,95,17,Peak season for hanbok rental and photos
+Bukchon,11,78,9,Autumn foliage still draws steady visitors
+Bukchon,12,65,1,Winter light festivals add evening visitors
+Itaewon,1,70,-2,International crowd keeps winter steady
+Itaewon,2,72,1,Steady year-round nightlife demand
+Itaewon,3,76,7,Spring brings outdoor rooftop bar season
+Itaewon,4,82,13,Rooftop bars reopen for warmer evenings
+Itaewon,5,88,18,Festival season and rooftop dining peak
+Itaewon,6,90,23,Halloween-adjacent global community events
+Itaewon,7,78,27,Rainy season slightly reduces rooftop visits
+Itaewon,8,80,28,Summer expat and tourist crowd strong
+Itaewon,9,85,23,Comfortable weather for international dining
+Itaewon,10,98,17,Halloween season is the single biggest peak
+Itaewon,11,75,9,Cooling temps reduce rooftop bar traffic
+Itaewon,12,85,1,Christmas market and global community events
+Gangnam,1,75,-2,Business district stays steady year-round
+Gangnam,2,76,1,Consistent corporate and shopping traffic
+Gangnam,3,80,7,Shopping season picks up with spring
+Gangnam,4,82,13,Steady mall and street traffic
+Gangnam,5,85,18,Pleasant weather boosts outdoor shopping streets
+Gangnam,6,83,23,Consistent indoor mall traffic regardless of heat
+Gangnam,7,78,27,Mall traffic stays strong due to air conditioning
+Gangnam,8,80,28,Summer sale season draws shopping crowds
+Gangnam,9,86,23,Back to school and fall fashion season
+Gangnam,10,90,17,Peak shopping season with fall collections
+Gangnam,11,88,9,Year-end shopping season begins
+Gangnam,12,95,1,Holiday shopping and year-end parties peak

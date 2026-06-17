@@ -1,38 +1,40 @@
-neighborhood,spot_name,spot_name_kr,category,lat,lng,description,google_rating,price_range,must_visit
-Hongdae,Hongdae Street,홍대 거리,landmark,37.5563,126.9236,"The main street buzzing with street performers, indie shops, and nightlife venues",4.2,$$,TRUE
-Hongdae,Hongdae Free Market,홍대 자유시장,market,37.5579,126.9255,"Weekend market with local artists selling handmade crafts and vintage items",4.5,$,TRUE
-Hongdae,Club FF,클럽 FF,nightlife,37.5580,126.9228,"Iconic underground club famous for indie and electronic music",4.0,$$$,FALSE
-Hongdae,Cafe Bora,카페 보라,cafe,37.5553,126.9230,"Famous for its purple taro latte and aesthetic interior",4.3,$$,TRUE
-Hongdae,Gyeongui Line Forest Park,경의선 숲길,park,37.5600,126.9260,"Linear park converted from old railway — perfect for evening walks",4.6,$,TRUE
-Seongsu,Anthracite Coffee,앤트러사이트,cafe,37.5448,127.0559,"Artisan coffee in a converted former shoe factory — industrial-chic icon",4.5,$$,TRUE
-Seongsu,Daelim Warehouse,대림창고,cafe,37.5430,127.0545,"The original Seongsu gallery-cafe in a converted cold storage warehouse",4.3,$$,TRUE
-Seongsu,Cafe Onion,카페 어니언,cafe,37.5440,127.0570,"Wildly popular bakery-cafe in a renovated factory building",4.6,$$,TRUE
-Seongsu,Seoul Forest,서울숲,park,37.5447,127.0374,"Large urban park perfect for picnics and relaxing away from the city buzz",4.7,$,TRUE
-Seongsu,Seongsu Hangang Park,성수 한강공원,park,37.5340,127.0650,"Riverside park popular for cycling, picnics, and Han River sunsets",4.5,$,TRUE
-Bukchon,Bukchon Hanok Village,북촌 한옥마을,landmark,37.5826,126.9830,"Most iconic traditional Korean neighborhood — 600-year-old hanok houses",4.5,$,TRUE
-Bukchon,Gyeongbokgung Palace,경복궁,landmark,37.5796,126.9770,"The largest Joseon dynasty palace. Changing of the guard ceremony daily",4.7,$,TRUE
-Bukchon,National Folk Museum,국립민속박물관,museum,37.5811,126.9796,"Free museum inside Gyeongbokgung covering Korean folk history",4.5,$,TRUE
-Bukchon,Changdeokgung Palace,창덕궁,landmark,37.5792,126.9910,"UNESCO World Heritage palace with a beautiful secret garden",4.6,$$,TRUE
-Insadong,Ssamziegil,쌈지길,shopping,37.5724,126.9868,"Unique courtyard shopping complex with indie brands and crafts",4.3,$$,TRUE
-Insadong,Ikseon-dong Alley,익선동 골목,landmark,37.5744,126.9950,"Traditional hanok alleys transformed into trendy cafes and bars — very photogenic",4.4,$$,TRUE
-Insadong,Tapgol Park,탑골공원,landmark,37.5718,126.9869,"Historic park with a 10-story pagoda — important independence movement site",4.2,$,FALSE
-Itaewon,Itaewon Food Street,이태원 음식 거리,landmark,37.5340,126.9946,"Rows of restaurants serving cuisines from every corner of the world",4.1,$$,TRUE
-Itaewon,Leeum Samsung Museum,리움미술관,museum,37.5385,126.9988,"World-class private art museum with Korean and international collections",4.7,$$,TRUE
-Itaewon,Haebangchon,해방촌,neighborhood,37.5391,126.9837,"Hillside neighborhood with rooftop bars and multicultural food scene",4.4,$$,TRUE
-Gangnam,COEX Mall,코엑스몰,shopping,37.5126,127.0594,"Massive underground mall with the famous Starfield Library inside",4.3,$$,TRUE
-Gangnam,Gangnam Station,강남역,landmark,37.4979,127.0276,"One of Seoul's busiest intersections — underground shopping and dining",4.0,$$,TRUE
-Gangnam,Apgujeong Rodeo Street,압구정 로데오,shopping,37.5270,127.0414,"High-fashion street with designer boutiques and K-beauty clinics",4.2,$$$,FALSE
-Gangnam,SM Town,SM타운 코엑스,kpop,37.5113,127.0602,"K-pop entertainment complex with exhibitions and a store for SM artists",4.4,$$,TRUE
-Euljiro,Euljiro 3-ga Alley,을지로3가 골목,landmark,37.5662,126.9910,"Hidden labyrinth of vintage bars and small craft workshops",4.4,$,TRUE
-Euljiro,Sewoon Plaza,세운상가,landmark,37.5703,126.9937,"Iconic 1970s megastructure turned into a creative maker space and rooftop walkway",4.3,$,TRUE
-Euljiro,Dongdaemun Design Plaza,DDP 동대문디자인플라자,landmark,37.5669,127.0095,"Zaha Hadid-designed futuristic building hosting design exhibitions and events",4.6,$,TRUE
-Yeonnam,Gyeongui Line Forest Park,경의선 숲길 연남,park,37.5622,126.9244,"Linear greenway through the heart of Yeonnam — best for a peaceful afternoon walk",4.6,$,TRUE
-Yeonnam,Tom N Toms Yeonnam,연남동 카페거리,cafe,37.5608,126.9240,"Yeonnam's cafe alley — dozens of independent coffee shops in a small radius",4.3,$$,TRUE
-Myeongdong,Myeongdong Street,명동 거리,shopping,37.5636,126.9869,"The main shopping strip with K-beauty brands, fast fashion, and street food",4.0,$$,TRUE
-Myeongdong,Myeongdong Cathedral,명동성당,landmark,37.5633,126.9878,"Beautiful 19th-century Gothic cathedral — a peaceful escape from the shopping chaos",4.7,$,TRUE
-Myeongdong,Namdaemun Market,남대문시장,market,37.5590,126.9784,"Korea's largest traditional market open 24/7 — great for street food and souvenirs",4.3,$,TRUE
-Yeonnam,Mangwon Market,망원시장,market,37.5559,126.9022,"Local traditional market loved by residents — great for affordable Korean street food and fresh produce",4.5,$,TRUE
-Yeonnam,Yeonnam-dong Alley,연남동 골목길,landmark,37.5615,126.9238,"Charming narrow alleys lined with independent bookshops, vintage stores, and quiet cafes",4.4,$,TRUE
-Yeonnam,Hongje Stream,홍제천,park,37.5630,126.9280,"Small urban stream-side walking path — peaceful and less crowded than Han River parks",4.3,$,FALSE
-Insadong,Unhyeongung Palace,운현궁,landmark,37.5733,126.9850,"Smaller but beautifully preserved Joseon palace — far less crowded than Gyeongbokgung",4.4,$,FALSE
-Insadong,Nagwon Arcade,낙원상가,landmark,37.5730,126.9900,"Legendary music instrument mall above a traditional market — unique slice of old Seoul",4.1,$,FALSE
+neighborhood,spot_name,spot_name_kr,category,lat,lng,description,google_rating
+Hongdae,Hongdae Street,홍대 거리,landmark,37.5563,126.9236,The main street buzzing with street performers indie shops and nightlife venues,4.2
+Hongdae,Hongdae Free Market,홍대 자유시장,market,37.5579,126.9255,Weekend market with local artists selling handmade crafts and vintage items,4.5
+Hongdae,Club FF,클럽 FF,nightlife,37.5580,126.9228,Iconic underground club famous for indie and electronic music,4.0
+Hongdae,Cafe Bora,카페 보라,cafe,37.5553,126.9230,Famous for its purple taro latte and aesthetic interior,4.3
+Hongdae,Gyeongui Line Forest Park,경의선 숲길,park,37.5600,126.9260,Linear park converted from old railway perfect for evening walks,4.6
+Seongsu,Anthracite Coffee,앤트리사이트,cafe,37.5448,127.0559,Artisan coffee in a converted former shoe factory industrial-chic icon,4.5
+Seongsu,Daelim Warehouse,대림창고,cafe,37.5430,127.0545,The original Seongsu gallery-cafe in a converted cold storage warehouse,4.3
+Seongsu,Cafe Onion,카페 어니언,cafe,37.5440,127.0570,Wildly popular bakery-cafe in a renovated factory building,4.6
+Seongsu,Seoul Forest,서울숲,park,37.5447,127.0374,Large urban park perfect for picnics and relaxing away from the city buzz,4.7
+Seongsu,Seongsu Hangang Park,성수 한강공원,park,37.5340,127.0650,Riverside park popular for cycling picnics and Han River sunsets,4.5
+Bukchon,Bukchon Hanok Village,북촌 한옥마을,landmark,37.5826,126.9830,Most iconic traditional Korean neighborhood 600-year-old hanok houses,4.5
+Bukchon,Gyeongbokgung Palace,경복궁,landmark,37.5796,126.9770,The largest Joseon dynasty palace Changing of the guard ceremony daily,4.7
+Bukchon,National Folk Museum,국립민속박물관,museum,37.5811,126.9796,Free museum inside Gyeongbokgung covering Korean folk history,4.5
+Bukchon,Changdeokgung Palace,창덕궁,landmark,37.5792,126.9910,UNESCO World Heritage palace with a beautiful secret garden,4.6
+Insadong,Ssamziegil,쌈지길,shopping,37.5724,126.9868,Unique courtyard shopping complex with indie brands and crafts,4.3
+Insadong,Ikseon-dong Alley,익선동 골목,landmark,37.5744,126.9950,Traditional hanok alleys transformed into trendy cafes and bars very photogenic,4.4
+Insadong,Tapgol Park,탑골공원,landmark,37.5718,126.9869,Historic park with a 10-story pagoda important independence movement site,4.2
+Itaewon,Itaewon Food Street,이태원 음식 거리,landmark,37.5340,126.9946,Rows of restaurants serving cuisines from every corner of the world,4.1
+Itaewon,Leeum Samsung Museum,리움미술관,museum,37.5385,126.9988,World-class private art museum with Korean and international collections,4.7
+Itaewon,Haebangchon,해방촌,neighborhood,37.5391,126.9837,Hillside neighborhood with rooftop bars and multicultural food scene,4.4
+Gangnam,COEX Mall,코엑스몰,shopping,37.5125,127.0590,Massive underground shopping mall with the famous Starfield Library,4.4
+Gangnam,Bongeunsa Temple,봉은사,landmark,37.5145,127.0578,Peaceful Buddhist temple located surprisingly close to the business district,4.5
+Gangnam,Garosugil,가로수길,shopping,37.5202,127.0230,Tree-lined street with boutique fashion stores and trendy cafes,4.2
+Euljiro,Euljiro Printing Alley,을지로 인쇄골목,landmark,37.5670,126.9920,Old printing district reborn as a hub for hip retro bars and cafes,4.3
+Euljiro,Hidden Bars of Euljiro,을지로 노가리골목,nightlife,37.5660,126.9905,Cluster of speakeasy-style bars tucked inside old hardware shops,4.1
+Yeonnam,Yeonnam-dong Forest Park,연남동 경의선숲길,park,37.5618,126.9255,Cafe-lined park extension popular for picnics and brunch,4.5
+Yeonnam,Donggyo-ro Cafe Street,동교로 카페거리,cafe,37.5635,126.9260,Quiet residential street packed with independent specialty cafes,4.4
+Myeongdong,Myeongdong Shopping Street,명동 쇼핑거리,shopping,37.5636,126.9869,Korea's most famous shopping street for cosmetics and street food,4.0
+Myeongdong,Myeongdong Cathedral,명동성당,landmark,37.5633,126.9869,Gothic-style cathedral and historic symbol of Korean democracy,4.5
+Mangwon,Mangwon Market,망원시장,market,37.5559,126.9100,Traditional market beloved by locals for affordable Korean street food,4.5
+Mangwon,Mangwon Hangang Park,망원 한강공원,park,37.5555,126.8980,Quiet riverside park popular for cycling and sunset picnics,4.6
+Jamsil,Lotte World,롯데월드,landmark,37.5113,127.0980,Iconic indoor-outdoor amusement park and Seoul Sky observation tower,4.3
+Jamsil,Seokchon Lake,석촌호수,park,37.5106,127.1020,Scenic lake park famous for cherry blossoms in spring,4.6
+Apgujeong,Apgujeong Rodeo Street,압구정 로데오거리,shopping,37.5274,127.0402,Upscale fashion street known for K-pop entertainment agencies nearby,4.2
+Apgujeong,Galleria Department Store,갤러리아백화점,shopping,37.5270,127.0410,Luxury department store with a striking glass-disc facade,4.4
+Seochon,Tongin Market,통인시장,market,37.5800,126.9690,Historic market famous for its retro lunchbox coin-meal experience,4.4
+Mullae,Mullae Art Village,문래창작촌,landmark,37.5167,126.8950,Former steel district now packed with artist studios and murals,4.4
+Dongdaemun,Dongdaemun Design Plaza,동대문디자인플라자,landmark,37.5670,127.0094,Futuristic Zaha Hadid building hosting design exhibitions and markets,4.5
+Dongdaemun,Dongdaemun Night Market,동대문 야시장,market,37.5701,127.0098,Massive 24-hour wholesale fashion market famous for night shopping,4.1

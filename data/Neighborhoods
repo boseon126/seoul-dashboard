@@ -1,16 +1,10 @@
-neighborhood,neighborhood_kr,lat,lng,vibe_score,food_score,shopping_score,culture_score,accessibility,nightlife_score,instagram_mentions,google_rating,review_count,healing_score,active_score
-Hongdae,홍대,37.5563,126.9236,9,8,8,6,9,10,3200000,4.2,42000,3,10
-Seongsu,성수동,37.5444,127.0557,8,9,7,6,7,5,3800000,4.4,38000,7,6
-Bukchon,북촌,37.5826,126.9830,5,6,5,10,7,2,2100000,4.5,29000,8,3
-Insadong,인사동,37.5714,126.9864,6,7,7,9,8,3,1500000,4.1,22000,7,4
-Itaewon,이태원,37.5340,126.9946,8,9,6,7,8,9,1800000,4.0,31000,4,8
-Gangnam,강남,37.4979,127.0276,7,8,10,5,10,7,2600000,4.3,55000,4,7
-Euljiro,을지로,37.5662,126.9910,6,7,5,8,8,6,900000,4.2,14000,6,5
-Yeonnam,연남동,37.5622,126.9244,5,7,4,6,8,4,1100000,4.3,18000,9,4
-Myeongdong,명동,37.5636,126.9869,8,8,10,5,10,6,2400000,3.9,48000,3,6
-Mangwon,망원동,37.5559,126.9100,5,8,5,4,6,3,650000,4.4,9800,8,4
-Jamsil,잠실,37.5133,127.1000,6,7,9,6,9,5,1700000,4.2,33000,5,6
-Apgujeong,압구정로데오,37.5274,127.0402,7,8,9,5,8,7,1450000,4.1,21000,4,6
-Seochon,서촌,37.5800,126.9690,5,6,4,9,7,2,780000,4.4,11000,8,3
-Mullae,문래동,37.5167,126.8950,7,6,4,8,6,5,520000,4.3,7200,6,5
-Dongdaemun,동대문,37.5714,127.0098,6,7,9,6,9,8,1600000,4.0,26000,3,7
+neighborhood,neighborhood_kr,lat,lng,vibe_score,food_score,shopping_score,culture_score,accessibility,nightlife_score,instagram_mentions,google_rating,review_count,healing_score,active_score,food_travel_score,culture_travel_score,subway_lines,avg_coffee_price,cafe_ratio,food_ratio,shopping_ratio,culture_ratio,morning,afternoon,evening,night,description_en,persona_tags
+Hongdae,홍대,37.5563,126.9236,9,8,8,6,9,10,3200000,4.2,42000,3,10,7,4,Line 2 / Airport Railroad / Gyeongui-Jungang Line,5500,30,30,25,15,4,6,9,10,The youthful heart of Seoul's indie music and street art scene packed with clubs busking and endless nightlife energy,#Youthful #Nightlife #Indie #Energetic #StreetArt
+Seongsu,성수동,37.5444,127.0557,8,9,7,6,7,5,3800000,4.4,38000,7,6,9,5,Line 2,6500,38,28,22,12,3,7,8,5,Seoul's hippest industrial-chic neighborhood where converted warehouses became the city's most photographed cafes and galleries,#Hip #Industrial #Cafe #Instagrammable #Trendy
+Bukchon,북촌,37.5826,126.9830,5,6,5,10,7,2,2100000,4.5,29000,8,3,5,10,Line 3,5000,20,15,10,55,8,9,4,2,Seoul's most iconic traditional hanok village where 600-year-old houses sit beside palace walls and quiet alleyways,#Traditional #Hanok #Historic #Quiet #Palace
+Insadong,인사동,37.5714,126.9864,6,7,7,9,8,3,1500000,4.1,22000,7,4,6,9,Line 1 / Line 3,4800,20,25,30,25,7,8,5,3,A cultural treasure trove of traditional crafts tea houses art galleries and the famous Ssamziegil shopping complex,#Traditional #Crafts #Tea #Culture #Shopping
+Itaewon,이태원,37.5340,126.9946,8,9,6,7,8,9,1800000,4.0,31000,4,8,8,6,Line 6,6000,20,35,15,15,4,6,8,9,Seoul's most international district blending global cuisine rooftop bars and a vibrant multicultural nightlife scene,#International #Diverse #Nightlife #Global #Rooftop
+Gangnam,강남,37.4979,127.0276,7,8,10,5,10,7,2600000,4.3,55000,4,7,7,5,Line 2 / Sinbundang Line,6800,20,20,40,10,5,8,8,7,Seoul's glitzy business and luxury shopping district home to COEX Mall and the source of the global Gangnam Style fame,#Luxury #Business #Shopping #Modern #Upscale
+Euljiro,을지로,37.5662,126.9910,6,7,5,8,8,6,900000,4.2,14000,6,5,6,8,Line 2 / Line 3,4500,25,30,15,30,5,7,7,6,Once a printing and hardware district now reborn as a hip retro hangout filled with hidden bars tucked between workshops,#Retro #Hidden #Industrial #IndieBar #Reborn
+Yeonnam,연남동,37.5622,126.9244,5,7,4,6,8,4,1100000,4.3,18000,9,4,6,5,Gyeongui-Jungang Line,5800,35,30,12,23,4,8,7,4,A laid-back residential neighborhood beloved for its forest park cafes and cozy independent coffee shop culture,#Chill #Local #Cozy #ForestPark #Cafe
+Myeongdong,명동,37.5636,126.9869,8,8,10,5,10,6,2400000,3.9,48000,3,6,7,5,Line 4,4200,15,25,45,15,6,8,7,6,Korea's most famous shopping street packed with cosmetics stores street food stalls and the historic Myeongdong Cathedral,#Shopping #StreetFood #Tourist #Busy #Cosmetics

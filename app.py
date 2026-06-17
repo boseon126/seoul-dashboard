@@ -294,7 +294,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── 데이터 불러오기 ────────────────────────────────────────
-@st.cache_data
+@st.cache_data(ttl=1)
 def load_data():
     nb = pd.read_csv("neighborhoods.csv")
     spots = pd.read_csv("spots.csv")

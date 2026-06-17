@@ -1,0 +1,8 @@
+neighborhood,category,ratio_restaurant,ratio_cafe,ratio_culture,ratio_shopping,avg_price_range_krw,visitor_age_2030_pct,vibe_score,value_score,trend_score,accessibility_score,sentiment_keywords,best_season
+Hongdae,Youth & Nightlife,30,25,10,35,15000-30000,72,8.5,7.0,9.0,9.0,"hip;energetic;youthful;crowded",Spring
+Seongsu,Trendy & Industrial,28,35,15,22,20000-45000,68,9.0,5.5,9.5,8.0,"hip;artistic;instagrammable;modern",Fall
+Bukchon,Traditional Culture,15,20,55,10,10000-25000,40,7.0,8.0,5.0,6.5,"traditional;quiet;historic;peaceful",Fall
+Itaewon,International & Nightlife,35,20,15,30,18000-40000,55,8.0,6.0,7.5,8.5,"diverse;global;nightlife;trendy",Summer
+Ikseondong,Retro & Traditional,25,30,30,15,12000-28000,60,8.5,6.5,8.0,7.0,"retro;nostalgic;cozy;photogenic",Spring
+Gangnam,Business & Luxury,30,20,10,40,25000-60000,50,7.5,4.5,7.0,9.5,"upscale;modern;busy;luxury",Year-round
+Yeonnam,Local & Cafe Culture,22,38,12,28,13000-27000,65,8.0,7.5,8.5,8.0,"chill;local;cozy;hip",Spring
